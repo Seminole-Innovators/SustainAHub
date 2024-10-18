@@ -99,3 +99,10 @@ a:hover {
     background-color: #f9fbe7; /* Pale greenish-yellow */
     min-height: 300px;
 }
+
+
+/* map */ 
+#map { 
+    margin-top: 8rem;
+    height: 40rem; 
+}
