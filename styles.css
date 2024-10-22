@@ -16,6 +16,7 @@
     --orange: #e67e22;
     --darker-orange: #d35400;
     --pale-green-yellow: #f9fbe7;
+    --white-color: #fff;
 }
 
 /* Styling the body */
@@ -36,13 +37,13 @@ body {
 header {
     background-color: var(--first-green); /* Green */
     padding: 20px 0;
-    color: white;
+    color: var(--white-color);
     text-align: center;
 }
 
 h1 {
     font-size: 5em;
-    color: #ffffff; /* Optional styling */
+    color: var(--white-color); /* Optional styling */
 }
 
 /* Style the navigation links as buttons */
@@ -66,7 +67,7 @@ nav ul li a.active {
 nav ul li a {
     display: inline-block;
     background-color: var(--first-green); /* Button green */
-    color: white;
+    color: var(--white-color);
     text-decoration: none;
     font-size: 1.5em;
     padding: 10px 20px; /* Add padding for button feel */
@@ -87,7 +88,7 @@ nav ul li a:active {
 /* Footer styling */
 footer {
     background-color: var(--darker-contrast-color); /* Darker contrast color */
-    color: white;
+    color: var(--white-color);
     text-align: center;
     padding: 15px 0;
     margin-top: 40px;
@@ -130,8 +131,8 @@ a:hover {
 }
 
 .calendar-container {
-    background: white;
-    width: 450px;
+    background: var(--white-color);
+    width: 500px;
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
@@ -142,7 +143,7 @@ a:hover {
     /* display: flex; */
     align-items: center;
     padding: 25px 100px 10px;
-    justify-content: space-between;
+    justify-content: space-evenly;
 } 
 
 div .calendar-navigation {
@@ -159,24 +160,25 @@ div .calendar-navigation span {
     border-radius: 50%;
     user-select: none;
     color: var(--orange);
-    font-size: 1.9rem;
+    font-size: 2rem;
 }
 
 .calendar-navigation span:last-child {
     margin-right: -10px;
 }
 
-header .calendar-navigation span:hover {
+.calendar-navigation span:hover {
     background: var(--body-color);
 }
 
-header .calendar-current-date {
-    font-weight: 500;
-    font-size: 1.45rem;
+.calendar-current-date {
+    
+    font-weight: 550px;
+    font-size: 3rem;
 }
 
 .calendar-body {
-    padding: 20px;
+    padding: 25px;
 }
 
 .calendar-body ul {
@@ -213,7 +215,7 @@ header .calendar-current-date {
 }
 
 .calendar-dates li.active {
-    color: #fff;
+    color: var(--white-color);
 }
 
 .calendar-dates li::before {
@@ -233,7 +235,7 @@ header .calendar-current-date {
 }
 
 .calendar-dates li:not(.active):hover::before {
-    background: #e4e1e1;
+    background: var(--body-color);
 }
 
 
