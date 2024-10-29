@@ -26,6 +26,14 @@ const currdate = document
 const prenexIcons = document
     .querySelectorAll(".calendar-navigation span");
 
+console.log(date.toLocaleDateString());
+
+let events = document.querySelectorAll('.events-today');
+
+events.innerHTML = date.toLocaleDateString();
+
+console.log(events);
+
 // Array of month names
 const months = [
     "January",
@@ -69,7 +77,7 @@ const manipulate = () => {
     // Loop to add the dates of the current month
     for (let i = 1; i <= lastdate; i++) {
 
-        // Check if the current date is today
+        // Check if the current date is today 
         let isToday = i === date.getDate()
             && month === new Date().getMonth()
             && year === new Date().getFullYear()
@@ -129,7 +137,3 @@ prenexIcons.forEach(icon => {
         manipulate();
     });
 });
-
-let today = new Date()
-
-console.log(today.getDate)
