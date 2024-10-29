@@ -108,41 +108,5 @@ picture {
     box-sizing: border-box; 
 }
 
-body{
-    width: 100%; 
-    height: 100vh; 
-    background-color: #d2d1d3;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-}
 
-.wrapper{
-    background-color: #fff; 
-    padding: 3% 5%; 
-    border-radius: 7px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center
-}
 
-.image img{
-    width: 200px; 
-    height: 200px; 
-    object-fit: cover; 
-    border-radius: 50%; 
-    cursor: pointer; 
-}
-
-#file-path{
-    display: none; 
-}
-
-.wrapper h2{
-    margin-bottom: 20ox;
-}
-
-.image{
-    position: relative; 
-}
