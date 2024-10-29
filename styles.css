@@ -99,3 +99,54 @@ a:hover {
     background-color: #f9fbe7; /* Pale greenish-yellow */
     min-height: 300px;
 }
+
+#resourceLinks{
+    text-align: center;
+    background-color: white;
+    border: 10px solid green;
+    padding: 10px 20px;
+    margin: 0 420px 0 420px;
+    text-decoration: none;
+    list-style: none;
+    font-size: 3em;
+    margin-bottom: 25px;
+} 
+
+a:hover, a:active {
+    background-color: green;
+    color: white;
+}
+
+.text-box {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    width: 45%;
+}
+
+.image-box {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-box img {
+    max-width: 300px; /* Adjust as needed */
+    margin: 10px;
+}
+.header-box {
+    background-color: #7af37e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.contentResource {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-left: 0;
+}
