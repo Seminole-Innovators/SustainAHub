@@ -26,13 +26,9 @@ const currdate = document
 const prenexIcons = document
     .querySelectorAll(".calendar-navigation span");
 
-console.log(date.toLocaleDateString());
 
-let events = document.querySelectorAll('.events-today');
-
-events.innerHTML = date.toLocaleDateString();
-
-console.log(events);
+const todayEvent = document.querySelector('#today-event')
+todayEvent.textContent = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 
 // Array of month names
 const months = [
