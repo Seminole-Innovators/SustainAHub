@@ -35,9 +35,6 @@ function geoFindMe() {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
-      
-  
-     
       var map = L.map('map').setView([latitude, longitude], 13);
 
         L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
