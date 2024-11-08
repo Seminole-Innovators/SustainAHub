@@ -14,8 +14,26 @@ function scrollToSection(sectionId) {
     }
 }
 
+// Function to get data from api 
+
+const fetchData = async (latitude, longitude) => {
+  const response = await fetch('/api', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          lat: latitude,
+          lon: longitude,
+      }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+};
+
 // Map
-function geoFindMe() {
+async function geoFindMe() {
 
     let LeafIcon = L.Icon.extend({
         options: {
@@ -32,8 +50,13 @@ function geoFindMe() {
 
 
     function success(position) {
+      // get coordinates 
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
+
+      // gets data 
+      // Call the function
+      fetchData(latitude, longitude);
 
       var map = L.map('map').setView([latitude, longitude], 13);
 
@@ -43,6 +66,7 @@ function geoFindMe() {
         }).addTo(map);
 
         L.marker([latitude, longitude], {icon: greenIcon}).addTo(map).bindPopup("I am a green leaf.");
+        
     }
   
     function error() {
@@ -58,6 +82,7 @@ function geoFindMe() {
     } else {
       navigator.geolocation.getCurrentPosition(success, error, options);
     }
-  }
+    
+}
   
 geoFindMe();
