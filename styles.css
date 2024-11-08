@@ -354,12 +354,14 @@ div .calendar-navigation span {
     text-align: center;
     background-color: white;
     border: 10px solid green;
-    padding: 10px 20px;
+    padding: 10px 10px;
     margin: 0 420px 0 420px;
     text-decoration: none;
+    a{text-decoration: none;};
     list-style: none;
     font-size: 3em;
     margin-bottom: 25px;
+    border-radius: 30px;
 } 
 
 a:hover, a:active {
