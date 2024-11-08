@@ -13,3 +13,6 @@ function scrollToSection(sectionId) {
         target.scrollIntoView({ behavior: 'smooth' });
     }
 }
+
+// Hello everyone! 
+
