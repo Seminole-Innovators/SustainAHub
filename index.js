@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Example route to handle frontend requests
-app.post('/api', async (req, res) => {
+app.post('/airquality', async (req, res) => {
     try {
         const { lat, lon } = req.body;
 

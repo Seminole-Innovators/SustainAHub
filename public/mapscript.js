@@ -17,7 +17,7 @@ function scrollToSection(sectionId) {
 // Function to get data from api 
 
 const fetchData = async (latitude, longitude) => {
-  const response = await fetch('/api', {
+  const response = await fetch('/airquality', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -65,8 +65,16 @@ async function geoFindMe() {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        L.marker([latitude, longitude], {icon: greenIcon}).addTo(map).bindPopup("I am a green leaf.");
-        
+        L.marker([latitude, longitude], {icon: greenIcon}).addTo(map).bindPopup("Your Current Location.");
+
+        // Place parks on map
+        fetch('./data/Parks.geojson')
+            .then(response => response.json())
+            .then(jsonData => {
+                for (let i = 0; i < jsonData.features.length; i++) {
+                    L.marker([jsonData.features[i].properties.YCOORD, jsonData.features[i].properties.XCOORD]).addTo(map).bindPopup(`${jsonData.features[i].properties.PARKNAME}`);
+                }
+        });
     }
   
     function error() {
