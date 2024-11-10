@@ -58,7 +58,7 @@ async function geoFindMe() {
       // Call the function
       fetchData(latitude, longitude);
 
-      var map = L.map('map').setView([latitude, longitude], 13);
+        var map = L.map('map').setView([latitude, longitude], 13);
 
         L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             maxZoom: 19,
@@ -66,14 +66,23 @@ async function geoFindMe() {
         }).addTo(map);
 
         L.marker([latitude, longitude], {icon: greenIcon}).addTo(map).bindPopup("Your Current Location.");
-
+        
         // Place parks on map
         fetch('./data/Parks.geojson')
-            .then(response => response.json())
-            .then(jsonData => {
-                for (let i = 0; i < jsonData.features.length; i++) {
-                    L.marker([jsonData.features[i].properties.YCOORD, jsonData.features[i].properties.XCOORD]).addTo(map).bindPopup(`${jsonData.features[i].properties.PARKNAME}`);
-                }
+        .then(response => response.json())
+        .then(jsonData => {
+        for (let i = 0; i < jsonData.features.length; i++) {
+                L.marker([jsonData.features[i].properties.YCOORD, jsonData.features[i].properties.XCOORD]).addTo(map).bindPopup(`${jsonData.features[i].properties.PARKNAME}`);
+            }
+        }); 
+        
+        // Place Sustainability Locations on Map
+        fetch('./data/Sustainability_Locations.geojson')
+        .then(response => response.json())
+        .then(jsonData => {
+            for (let i = 0; i < jsonData.features.length; i++) {
+                L.marker([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]]).addTo(map).bindPopup(`${jsonData.features[i].properties.NAME}`);
+            }
         });
     }
   
