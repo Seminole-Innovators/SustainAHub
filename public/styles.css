@@ -117,14 +117,30 @@ a:hover {
     min-height: 300px;
 }
 
-/* map */ 
+#index-content {
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* maps */ 
 #map { 
     margin-top: 2.5rem;
     height: 40rem; 
     /* z-index: 1; */
 }
 
+#small-map {
+    margin-top: 2.5rem;
+    height: 20rem;
+    width: 30rem;
+}
+
 /* calendar */ 
+
+#small-calendar {
+    width: 30rem;
+}
 /* .calendar-main {
     display: flex;
     background: var(--body-color);
@@ -143,8 +159,8 @@ a:hover {
 
 /* AH-HA! */
 
-.calendar-container div {
-    /* display: flex; */
+/* .calendar-container div {
+    display: flex;
     align-items: center;
     padding: 25px 100px 10px;
     justify-content: space-evenly;
@@ -252,7 +268,7 @@ div .calendar-navigation span {
     width: 500px;
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-  } */
+  } */ 
 
 /* About Us */
 
