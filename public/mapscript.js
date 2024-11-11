@@ -71,7 +71,7 @@ async function geoFindMe() {
         fetch('./data/Parks.geojson')
         .then(response => response.json())
         .then(jsonData => {
-        for (let i = 0; i < jsonData.features.length; i++) {
+            for (let i = 0; i < jsonData.features.length; i++) {
                 L.marker([jsonData.features[i].properties.YCOORD, jsonData.features[i].properties.XCOORD]).addTo(map).bindPopup(`${jsonData.features[i].properties.PARKNAME}`);
             }
         }); 

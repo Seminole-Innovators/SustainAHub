@@ -125,7 +125,7 @@ a:hover {
 }
 
 /* calendar */ 
-.calendar-main {
+/* .calendar-main {
     display: flex;
     background: var(--body-color);
     min-height: 100vh;
@@ -252,7 +252,7 @@ div .calendar-navigation span {
     width: 500px;
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-  }
+  } */
 
 /* About Us */
 
