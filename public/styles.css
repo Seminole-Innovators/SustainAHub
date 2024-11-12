@@ -118,9 +118,11 @@ a:hover {
 }
 
 #index-content {
+    max-width: max-content;
     margin: auto;
+    padding: 1.5rem;
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 /* maps */ 
