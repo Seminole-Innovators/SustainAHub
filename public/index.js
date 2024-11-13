@@ -79,7 +79,7 @@ const fetchData = async (latitude, longitude) => {
           }); 
           
           // Place Sustainability Locations on Map
-          fetch('./data/Sustainability_Locations.geojson')
+          fetch('./data/Filtered_Sustainability_Locations.geojson')
           .then(response => response.json())
           .then(jsonData => {
               for (let i = 0; i < jsonData.features.length; i++) {
