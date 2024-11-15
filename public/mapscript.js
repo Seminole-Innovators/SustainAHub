@@ -72,7 +72,7 @@ async function geoFindMe() {
         .then(response => response.json())
         .then(jsonData => {
             for (let i = 0; i < jsonData.features.length; i++) {
-                L.circle([jsonData.features[i].properties.YCOORD, jsonData.features[i].properties.XCOORD], {color: '#3e8e41', fillColor: '#3e8e41', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`${jsonData.features[i].properties.PARKNAME}`);
+                L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#3e8e41', fillColor: '#3e8e41', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData.features[i].properties.PARKNAME}</b> </br> ${jsonData.features[i].properties.ADDRESS}`);
             }
         }); 
         
@@ -81,7 +81,7 @@ async function geoFindMe() {
         .then(response => response.json())
         .then(jsonData => {
             for (let i = 0; i < jsonData.features.length; i++) {
-                L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`${jsonData.features[i].properties.NAME}`);
+                L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData.features[i].properties.NAME}</b> <br> ${jsonData.features[i].properties.LOC_CLASS} <br> ${jsonData.features[i].properties.LOC_ADDR1}, ${jsonData.features[i].properties.LOC_ADDR2} <br> ${jsonData.features[i].properties.CONTACT_PHONE}`);
             }
         });
     }

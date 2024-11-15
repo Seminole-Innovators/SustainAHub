@@ -70,22 +70,23 @@ const fetchData = async (latitude, longitude) => {
           L.marker([latitude, longitude], {icon: greenIcon}).addTo(map).bindPopup("Your Current Location.");
           
           // Place parks on map
-          fetch('./data/Parks.geojson')
-          .then(response => response.json())
-          .then(jsonData => {
-              for (let i = 0; i < jsonData.features.length; i++) {
-                  L.circle([jsonData.features[i].properties.YCOORD, jsonData.features[i].properties.XCOORD], {color: '#3e8e41', fillColor: '#3e8e41', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`${jsonData.features[i].properties.PARKNAME}`);
-              }
-          }); 
-          
-          // Place Sustainability Locations on Map... now filtered 
-          fetch('./data/Filtered_Sustainability_Locations.geojson')
-          .then(response => response.json())
-          .then(jsonData => {
-              for (let i = 0; i < jsonData.features.length; i++) {
-                  L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`${jsonData.features[i].properties.NAME}`);
-              }
-          });
+          // Place parks on map
+        fetch('./data/Parks.geojson')
+        .then(response => response.json())
+        .then(jsonData => {
+            for (let i = 0; i < jsonData.features.length; i++) {
+                L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#3e8e41', fillColor: '#3e8e41', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData.features[i].properties.PARKNAME}</b> </br> ${jsonData.features[i].properties.ADDRESS}`);
+            }
+        }); 
+        
+        // Place Sustainability Locations on Map
+        fetch('./data/Filtered_Sustainability_Locations.geojson')
+        .then(response => response.json())
+        .then(jsonData => {
+            for (let i = 0; i < jsonData.features.length; i++) {
+                L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData.features[i].properties.NAME}</b> <br> ${jsonData.features[i].properties.LOC_CLASS} <br> ${jsonData.features[i].properties.LOC_ADDR1}, ${jsonData.features[i].properties.LOC_ADDR2} <br> ${jsonData.features[i].properties.CONTACT_PHONE}`);
+            }
+        });
       }
     
       function error() {
