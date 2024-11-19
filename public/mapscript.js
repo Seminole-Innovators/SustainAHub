@@ -76,14 +76,31 @@ async function geoFindMe() {
             }
         }); 
         
+        // condition 
+        function validPhone(n) {
+            if (n) {
+                return n;
+            } else {
+                return "no phone number available"
+            }
+        }
+
+        function validURL(n) {
+            if (n) {
+                return n;
+            } else {
+                return "no websiteURL available"
+            }
+        }
+
         // Place Sustainability Locations on Map
         fetch('./data/Filtered_Sustainability_Locations.geojson')
         .then(response => response.json())
         .then(jsonData => {
             for (let i = 0; i < jsonData.features.length; i++) {
-                L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData.features[i].properties.NAME}</b> <br> ${jsonData.features[i].properties.LOC_CLASS} <br> ${jsonData.features[i].properties.LOC_ADDR1}, ${jsonData.features[i].properties.LOC_ADDR2} <br> ${jsonData.features[i].properties.CONTACT_PHONE}`);
+                L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData.features[i].properties.NAME}</b> <br> ${jsonData.features[i].properties.LOC_CLASS} <br> ${jsonData.features[i].properties.LOC_ADDR1}, ${jsonData.features[i].properties.LOC_ADDR2} <br> ${validPhone(jsonData.features[i].properties.CONTACT_PHONE)} <br> ${validURL(jsonData.features[i].properties.WEBSITE_URL)}`);
             }
-        });
+        }); 
     }
   
     function error() {
@@ -103,3 +120,13 @@ async function geoFindMe() {
 }
   
 geoFindMe();
+
+// Fetch data from the Express server route
+fetch('/fetchLocations')
+.then(response => response.json())
+.then(data => {
+  console.log('Data from Supabase:', data);
+})
+.catch(error => {
+  console.error('Error fetching data:', error);
+});

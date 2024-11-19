@@ -4,6 +4,7 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const path = require('path');
+const { createClient } = require('@supabase/supabase-js');
 
 // Middleware to parse JSON requests
 app.use(express.json());
@@ -11,7 +12,7 @@ app.use(express.json());
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Example route to handle frontend requests
+// route to handle frontend requests
 app.post('/airquality', async (req, res) => {
     try {
         const { lat, lon } = req.body;
@@ -35,6 +36,46 @@ app.post('/airquality', async (req, res) => {
         res.status(500).json({ error: 'An error occurred while querying the API' });
     }
 });
+
+/*
+ ==========================
+
+ Construction zone! 
+
+ 
+ Proceed with Caution 
+
+ ==========================
+*/
+
+// Get data from supabase hopefully 
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+
+// route to handle frontend requests
+app.get('/fetchLocations', async (req, res) => {
+    try {
+      // Query data from Supabase (replace with your table and fields)
+      const { data, error } = await supabase
+        .from('locations')  
+        .select('*'); 
+  
+      if (error) {
+        return res.status(500).json({ error: error.message });
+      }
+  
+      // Send the data as JSON to the client
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+/*
+ ==========================
+ 
+ End construction zone! 
+
+ ==========================
+*/
 
 // Start the server
 const PORT = process.env.PORT || 3000;
