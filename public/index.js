@@ -97,13 +97,16 @@ const fetchData = async (latitude, longitude) => {
         }
 
         // Place Sustainability Locations on Map
-        fetch('./data/Filtered_Sustainability_Locations.geojson')
+        fetch('/fetchLocations')
         .then(response => response.json())
         .then(jsonData => {
-            for (let i = 0; i < jsonData.features.length; i++) {
-                L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData.features[i].properties.NAME}</b> <br> ${jsonData.features[i].properties.LOC_CLASS} <br> ${jsonData.features[i].properties.LOC_ADDR1}, ${jsonData.features[i].properties.LOC_ADDR2} <br> ${validPhone(jsonData.features[i].properties.CONTACT_PHONE)} <br> ${validURL(jsonData.features[i].properties.WEBSITE_URL)}`);
+            for (let i = 0; i < jsonData.length; i++) {
+                L.circle([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
             }
-        }); 
+        })
+        .catch(error => {
+        console.error('Error fetching data:', error);
+        });
       }
     
       function error() {
