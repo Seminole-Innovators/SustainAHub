@@ -14,11 +14,9 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Hello everyone! 
+// Fetch air quality from the Express server route 
 
-// Function to get data from api 
-
-const fetchData = async (latitude, longitude) => {
+const fetchAirQuality = async (latitude, longitude) => {
     const response = await fetch('/airquality', {
         method: 'POST',
         headers: {
@@ -34,8 +32,8 @@ const fetchData = async (latitude, longitude) => {
     console.log(data);
   };
   
-  // Map
-  async function geoFindMe() {
+  // Success function 
+  function success(position) {
   
       let LeafIcon = L.Icon.extend({
           options: {
@@ -49,65 +47,60 @@ const fetchData = async (latitude, longitude) => {
       });
   
       let greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'});
+      // get coordinates 
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
   
+      // gets air quality data 
+      fetchAirQuality(latitude, longitude);
   
-      function success(position) {
-        // get coordinates 
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
+      var map = L.map('small-map').setView([latitude, longitude], 13);
   
-        // gets data 
-        // Call the function
-        fetchData(latitude, longitude);
+      // I believe that there is a problem with the map theme and it must be changed 
   
-          var map = L.map('small-map').setView([latitude, longitude], 13);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
   
-          L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-              maxZoom: 19,
-              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          }).addTo(map);
-  
-          L.marker([latitude, longitude], {icon: greenIcon}).addTo(map).bindPopup("Your Current Location.");
-          
-          // Place parks on map
-          // Place parks on map
-        fetch('./data/Parks.geojson')
-        .then(response => response.json())
-        .then(jsonData => {
-            for (let i = 0; i < jsonData.features.length; i++) {
-                L.circle([jsonData.features[i].geometry.coordinates[1], jsonData.features[i].geometry.coordinates[0]], {color: '#3e8e41', fillColor: '#3e8e41', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData.features[i].properties.PARKNAME}</b> </br> ${jsonData.features[i].properties.ADDRESS}`);
-            }
-        }); 
-        
-        // condition 
-        function validPhone(n) {
-            if (n) {
-                return n;
-            } else {
-                return "no phone number available"
-            }
-        }
-
-        function validURL(n) {
-            if (n) {
-                return n;
-            } else {
-                return "no websiteURL available"
-            }
-        }
-
-        // Place Sustainability Locations on Map
-        fetch('/fetchLocations')
-        .then(response => response.json())
-        .then(jsonData => {
-            for (let i = 0; i < jsonData.length; i++) {
-                L.circle([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
-            }
-        })
-        .catch(error => {
-        console.error('Error fetching data:', error);
-        });
+      L.marker([latitude, longitude], {icon: greenIcon}).addTo(map).bindPopup("Your Current Location.");
+      
+      // Place parks on map
+      fetch('/fetchParks')
+      .then(response => response.json())
+      .then(jsonData => {
+          for (let i = 0; i < jsonData.length; i++) {
+              L.circle([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {color: '#3e8e41', fillColor: '#3e8e41', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData[i].park_name}</b> <br> ${jsonData[i].address}`);
+          }
+      })
+      .catch(error => {
+      console.error('Error fetching data:', error);
+      });
+      
+      // condition for valid phone numbers
+      function validPhone(n) {
+          if (n) {
+              return n;
+          } else {
+              return "no phone number available"
+          }
       }
+      // Place Sustainability Locations on Map
+  
+      fetch('/fetchLocations')
+      .then(response => response.json())
+      .then(jsonData => {
+          for (let i = 0; i < jsonData.length; i++) {
+              L.circle([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
+          }
+      })
+      .catch(error => {
+      console.error('Error fetching data:', error);
+      });
+  }
+  
+  // Map
+  async function makeMap() {
     
       function error() {
         alert("Unable to retrieve your location.");
@@ -125,7 +118,7 @@ const fetchData = async (latitude, longitude) => {
       
   }
     
-  geoFindMe();
+  makeMap();
 
   // Calendar 
   document.addEventListener('DOMContentLoaded', function() {

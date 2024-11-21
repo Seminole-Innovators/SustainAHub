@@ -21,7 +21,7 @@ app.post('/airquality', async (req, res) => {
             return res.status(400).json({ error: 'Missing required parameters' });
         }
 
-        // Make the API request using Axios
+        // Make the API request using Axios, cool library to help make api calls
         const response = await axios.get(`${process.env.API_BASE_URL}`, {
             params: {
                 lat,
@@ -57,6 +57,24 @@ app.get('/fetchLocations', async (req, res) => {
       // Query data from Supabase (replace with your table and fields)
       const { data, error } = await supabase
         .from('locations')  
+        .select('*'); 
+  
+      if (error) {
+        return res.status(500).json({ error: error.message });
+      }
+  
+      // Send the data as JSON to the client
+      res.json(data);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/fetchParks', async (req, res) => {
+    try {
+      // Query data from Supabase (replace with your table and fields)
+      const { data, error } = await supabase
+        .from('parks')  
         .select('*'); 
   
       if (error) {
