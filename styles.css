@@ -110,20 +110,28 @@ profiles {
     margin: 0;
     display: flex; 
     flex-direction: row; 
+    white-space: normal;
   }
 
   .column {
-    float: none;
-    width: 33.3%;
-    margin-bottom: 16px;
-    padding: 0 8px;
+    float: left;
+    width: 255px;
+    height: 255px; 
+    padding: 5px;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
   }
 
   .title {
     color: black;
   }
   
-  img {
-    width: 255px;
-    height: auto;
+  .column img {
+    width: 100%;
+    height: 100%;
+    display: block; 
   }
