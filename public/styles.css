@@ -418,3 +418,113 @@ a:hover, a:active {
     margin-top: 20px;
     margin-left: 0;
 }
+
+
+/* */
+
+.project {
+    display: flex;
+    align-items: flex-start; /* Aligns content properly */
+    background: #e3f2e0; /* Light background for project cards */
+    margin: 50px 0;
+    padding: 15px;
+    border-radius: 12px; /* Rounded corners for cards */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Box shadow for cards */
+    transition: transform 0.2s; /* Added background transition */
+}
+
+.project:hover,
+.project.active{
+    transform: translateY(-3px); /* Slightly raise effect on hover */
+    background: linear-gradient(135deg, #e3f2e0 70%, #FF7F50 30%);
+    transition: background 0.5s ease; /* Transition only when active */
+}
+
+.project-info {
+    flex: 1; /* Text section takes remaining space */
+    padding-right: 20px; /* Adds space between text and image */
+    display: flex;
+    flex-direction: column; /* Stacks the text and button vertically */
+    justify-content: space-between; /* Distributes space between elements */
+    transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth height transition */
+    overflow: hidden; /* Hide overflow to prevent content from spilling out */
+}
+
+.project-timeframe {
+    font-style: italic;
+    color: #444444; /* Lighter black */
+    margin-bottom: 10px;
+}
+
+.project-title {
+    font-size: 1.6em;
+    margin: 0 0 -5px 0; /* Space for visual separation */
+}
+
+.project-description {
+    font-size: 1.3em;
+    margin: 0 0 10px 0;
+    text-align: left;
+}
+
+.project-description-li {
+    font-size: 1.3em;
+    margin: 0 0 8px 0;
+    text-align: left;
+}
+
+.project-subheading {
+    font-size: 1.4em;
+    text-align: left;
+}
+
+.more-content {
+    height: 0; /* Start collapsed */
+    overflow: hidden; /* Prevent overflow */
+    transition: height 0.5s ease-in-out; /* Smooth height transition */
+}
+
+.project-video {
+    width: 100%; /* Make the video take full width */
+    height: 360px; /* Set a fixed height */
+    max-width: 600px; /* Set a maximum width to control the size */
+    object-fit: cover; /* Ensures aspect ratio is maintained */
+    border-radius: 12px; /* Matches the card's border radius */
+}
+
+.project-image {
+    width: 50%; /* Ensure the image takes full width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 300px; /* Set a maximum width to control the size */
+    margin: 0; /* Reset margin */
+    display: block; /* Make sure the image behaves like a block element */
+    border-radius: 12px; /* Matches the card's border radius */
+}
+
+.btn {
+    display: inline-block;
+    background: #32c5ff; /* Button background color */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s; /* Reduced movement on hover */
+    margin-top: 20px; /* Adds spacing above the button */
+}
+
+.read-more-link {
+    color: #FF6347; /* Link color */
+    text-decoration: underline; /* Underline the text to indicate it's a link */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin-top: 10px; /* Space above the link */
+    display: inline-block; /* Allow spacing above */
+}
+
+.read-more-link:hover {
+    text-decoration: none; /* Optionally remove underline on hover */
+}
+
+.btn:hover {
+    background: #1f7699; /* Darker shade */
+    transform: scale(1.03); /* Slightly grow on hover */
+}

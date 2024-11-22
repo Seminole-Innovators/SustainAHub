@@ -35,6 +35,8 @@ const fetchAirQuality = async (latitude, longitude) => {
 // Success function 
 function success(position) {
 
+    // Icons
+
     let LeafIcon = L.Icon.extend({
         options: {
             shadowUrl: 'leaf-shadow.png',
@@ -47,6 +49,47 @@ function success(position) {
     });
 
     let greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'});
+
+    // Park Icon
+
+    let customMarker= L.Icon.extend({
+        options: {
+            iconSize:     [60, 60],
+            // iconAnchor:   [-22, -94],
+            // popupAnchor:  [-3, -76]
+        }
+    });
+
+    // Parks
+
+    let parkIcon = new customMarker({iconUrl: 'parkIcon.png'});
+
+    // Businesss Icon 
+
+    let businessIcon= new customMarker({iconUrl: 'businessIcon.png'});
+
+
+    // Charging Icon 
+
+    let electricVehicleIcon= new customMarker({iconUrl: 'chargingIcon.png'});
+
+    // Farming icon
+
+    let farmIcon = new customMarker({iconUrl: 'farmIcon.png'}); 
+
+    // Farmers market icon 
+
+    let farmersMarketIcon = new customMarker({iconUrl: 'marketIcon.png'}); 
+
+    // Garden icon 
+
+    let gardenIcon = new customMarker({iconUrl: 'gardenIcon.png'});
+
+    // recycling icon 
+
+    let recyclingIcon = new customMarker({iconUrl: 'recycleIcon.png'});
+
+
     // get coordinates 
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -70,7 +113,7 @@ function success(position) {
     .then(response => response.json())
     .then(jsonData => {
         for (let i = 0; i < jsonData.length; i++) {
-            L.circle([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {color: '#3e8e41', fillColor: '#3e8e41', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData[i].park_name}</b> <br> ${jsonData[i].address}`);
+            L.marker([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {icon: parkIcon}).addTo(map).bindPopup(`<b>${jsonData[i].park_name}</b> <br> ${jsonData[i].address}`);
         }
     })
     .catch(error => {
@@ -91,8 +134,21 @@ function success(position) {
     .then(response => response.json())
     .then(jsonData => {
         for (let i = 0; i < jsonData.length; i++) {
-            L.circle([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {color: '#2c3e50', fillColor: '#2c3e50', fillOpacity: 1, radius: 70}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
+            if (jsonData[i].loc_class == 'Sustainable Business') {
+                L.marker([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {icon: businessIcon}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
+            } else if (jsonData[i].loc_class == 'Electric Vehicle Charging Station') {
+                L.marker([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {icon: electricVehicleIcon}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
+            } else if (jsonData[i].loc_class == 'Regional Farm') {
+                L.marker([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {icon: farmIcon}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
+            } else if (jsonData[i].loc_class == 'Farmers\' Market') {
+                L.marker([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {icon: farmersMarketIcon}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
+            } else if (jsonData[i].loc_class == 'Garden') {
+                L.marker([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {icon: gardenIcon}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
+            } else if (jsonData[i].loc_class == 'Recycling') {
+                L.marker([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {icon: recyclingIcon}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
+            }
         }
+        console.log(jsonData);
     })
     .catch(error => {
     console.error('Error fetching data:', error);
