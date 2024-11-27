@@ -101,7 +101,7 @@ const fetchAirQuality = async (latitude, longitude) => {
   
       // I believe that there is a problem with the map theme and it must be changed 
   
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
           maxZoom: 19,
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
@@ -148,7 +148,7 @@ const fetchAirQuality = async (latitude, longitude) => {
                   L.marker([jsonData[i].geom.coordinates[1], jsonData[i].geom.coordinates[0]], {icon: recyclingIcon}).addTo(map).bindPopup(`<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`);
               }
           }
-          console.log(jsonData);
+          // console.log(jsonData);
       })
       .catch(error => {
       console.error('Error fetching data:', error);

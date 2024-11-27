@@ -502,6 +502,7 @@ a:hover, a:active {
 }
 
 .btn {
+    width: 25%;
     display: inline-block;
     background: #32c5ff; /* Button background color */
     color: white;
