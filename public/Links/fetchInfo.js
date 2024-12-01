@@ -32,7 +32,8 @@ if (recyclePoints) {
             const newDiv = document.createElement('div');
               if (jsonData[i].loc_class == 'Recycling') {
                   newDiv.innerHTML = `<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`;
-                  recyclePoints.appendChild(newDiv)
+                  newDiv.classList.add('location');
+                  recyclePoints.appendChild(newDiv);
             }
           }
           console.log(jsonData);
@@ -50,9 +51,10 @@ if (sustainableBusinesses) {
     .then(jsonData => {
         for (let i = 0; i < jsonData.length; i++) {
             const newDiv = document.createElement('div');
-            if (jsonData[i].loc_class == 'Recycling') {
+            if (jsonData[i].loc_class == 'Sustainable Business') {
                 newDiv.innerHTML = `<b>${jsonData[i].name}</b> <br> ${jsonData[i].loc_class} <br> ${jsonData[i].loc_addr1}, ${jsonData[i].loc_addr2} <br> ${validPhone(jsonData[i].contact_phone)} <br>`;
-                sustainableBusinesses.appendChild(newDiv)
+                newDiv.classList.add('location');
+                sustainableBusinesses.appendChild(newDiv); 
             }
         }
         console.log(jsonData);

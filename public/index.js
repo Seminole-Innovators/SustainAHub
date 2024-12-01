@@ -28,12 +28,11 @@ const fetchAirQuality = async (latitude, longitude) => {
         }),
     });
   
-    const data = await response.json();
-    console.log(data);
+    return response.json();
   };
   
   // Success function 
-  function success(position) {
+  async function success(position) {
   
       // Icons
   
@@ -95,7 +94,34 @@ const fetchAirQuality = async (latitude, longitude) => {
       const longitude = position.coords.longitude;
   
       // gets air quality data 
-      fetchAirQuality(latitude, longitude);
+      const aqiData = await fetchAirQuality(latitude, longitude);
+
+      const airQualityText = document.querySelector('#air-quality-text'); 
+
+      let airQualityNumber = document.querySelector('#air-quality-number');
+
+      airQualityNumber.textContent = aqiData.list[0].main.aqi;
+
+      if (aqiData.list[0].main.aqi == 5) {
+        // airQualityNumber.classList.add('bad');
+        airQualityText.innerText = 'This air quality score, from 1 (very little to no pollutants) to 5 (dangerously high pollutants), indicates that the air quality in your area is so heavily polluted that it is hazardous to breathe. You must take action right away to protect the environment and reverse the grave damages that have been done.'; 
+      } else if (aqiData.list[0].main.aqi == 4) {
+        // airQualityNumber.classList.add('low'); 
+        airQualityText.innerText = 'This air quality score, from 1 (almost no pollutants) to 5 (dangerously high pollutants), indicates that the air quality in your area is dangerously low and possibly harmful to breathe. You should strongly consider taking action to prevent it from becoming worse.'
+      } else if (aqiData.list[0].main.aqi == 3) {
+        // airQualityNumber.classList.add('middle'); 
+        airQualityText.innerText = 'This air quality score, from 1 (almost no pollutants) to 5 (dangerously high pollutants), indicates that the air quality in your area is somewhat polluted and you should consider taking action to encourage a more sustainable future for your area.';
+      } else if (aqiData.list[0].main.aqi == 2) {
+        // airQualityNumber.classList.add('good'); 
+        airQualityText.innerText = 'This air quality score, from 1 (almost no pollutants) to 5 (dangerously high pollutants), indicates that the air quality in your area is relatively good, however it needs improvement. If you get involved with efforts to protect the environment, you will ensure that it will become cleaner and stay that way.';
+      } else if (aqiData.list[0].main.aqi <= 1) {
+        // airQualityNumber.classList.add('great'); 
+        airQualityText.innerText = 'This air quality score, from 1 (almost no pollutants) to 5 (dangerously high pollutants), indicates that the air quality in your area is very good, however, it does not mean it will stay that way forever. By encouraging sustainability and environmental protection, you can ensure that the air quality will stay as good as it is now for genereations to come.';
+      }
+
+      
+
+
   
       var map = L.map('small-map').setView([latitude, longitude], 13);
   
