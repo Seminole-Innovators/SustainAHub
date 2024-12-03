@@ -1,6 +1,5 @@
 export function aqi() {
-
-    console.log('Is this even working?')
+    
     // Fetch air quality from the Express server route 
 
     const fetchAirQuality = async (latitude, longitude) => {

@@ -1,6 +1,4 @@
 export function map(mapId) {
-
-    console.log('Is this even working?')
     
     // Success function 
     async function success(position) {

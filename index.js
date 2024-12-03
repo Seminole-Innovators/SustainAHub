@@ -3,6 +3,7 @@ require('dotenv').config();  // Load environment variables from .env
 const express = require('express');
 const axios = require('axios');
 const app = express();
+const { JSDOM } = require('jsdom');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 
@@ -94,6 +95,69 @@ app.get('/fetchLocations', async (req, res) => {
 
  ==========================
 */
+// Hopefully scaping 
+
+/**
+ * Scrapes the webpage and returns an array of text content from elements with the given class.
+ * @param {string} url - The URL of the page to scrape.
+ * @param {string} className - The class name to search for.
+ * @returns {Promise<Array<string>>} - A promise that resolves to an array of text content.(, link, time, location)
+ */
+async function scrapePage(url, title, linkParent, date, county) {
+  const { JSDOM } = require('jsdom');
+  const axios = require('axios');
+  try {
+    // Fetch the HTML content of the page using axios
+    const response = await axios.get(url);
+
+    // Create a JSDOM instance from the HTML content
+    const dom = new JSDOM(response.data);
+
+    // Normalize URL !!!! This may need tweaking in the future
+    const parsedUrl = new URL(url);
+    const baseURL =  parsedUrl.origin;
+
+    // Use DOM querying to get all elements with the specific class name
+    const titles = dom.window.document.querySelectorAll(`.${title}`);
+    const anchors = dom.window.document.querySelectorAll(`.${linkParent} a`);
+    const dates  = dom.window.document.querySelectorAll(`.${date}`);
+    const counties  = dom.window.document.querySelectorAll(`.${county}`);
+    const elementsList = [];
+
+    // Iterate over the elements and log them (or handle them as needed)
+
+    for (let i = 0; i < titles.length; i++) {
+      elementsList.push({
+        "title": titles[i].innerHTML.trim(),
+        "link": `${baseURL}${anchors[i].href}`, 
+        "date": dates[i].innerHTML.trim(),
+        "county": counties[i].innerHTML.trim()
+      });
+    }
+    console.log(elementsList);
+    return elementsList;
+  } catch (error) {
+    console.error('Error scraping the website:', error);
+  }
+
+}
+
+// Route to fetch basic events
+
+app.get('/fetchEvents', async (req, res) => {
+
+  try {
+    // Scrape the page for the given class
+    const events = await scrapePage('https://floridadep.gov/events-list/month?field_county_tid=36&field_is_a_public_notice_value=All', 'views-field-title', 'field-content', 'views-field-field-events-date', 'views-field-field-county');
+    
+    // Send the extracted text data as a response
+    res.json({ events });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to scrape the page.' });
+  }
+});
+
+scrapePage('https://floridadep.gov/events-list/month?field_county_tid=36&field_is_a_public_notice_value=All', 'views-field-title', 'field-content', 'views-field-field-events-date', 'views-field-field-county');
 
 // Start the server
 const PORT = process.env.PORT || 3000;
