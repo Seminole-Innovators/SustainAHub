@@ -31,7 +31,17 @@ fetch('/fetchEvents')
     console.log(jsonData)
     for (let i = 0; i < jsonData.events.length; i++) {
         const newDiv = document.createElement('div'); 
-        newDiv.innerHTML = `${jsonData.events[i].title} <br> <a href="${jsonData.events[i].link}">Link</a> <br> ${jsonData.events[i].date} <br> ${jsonData.events[i].county}`
+        newDiv.innerHTML = `<h2>${jsonData.events[i].title}</h2> <br> <a href="${jsonData.events[i].link}">Link to Event</a> <br> ${jsonData.events[i].date} <br> ${jsonData.events[i].county}`
         eventsDiv.appendChild(newDiv);
     }
-})
+});
+
+// Create a new Date object to get the current date and time
+const currentDate = new Date();
+
+// Get the current date and time in a readable format
+const dateTimeString = currentDate.toLocaleString();
+
+const update = document.querySelector('#update');
+
+update.textContent = `Page last updated on: ${dateTimeString}`;

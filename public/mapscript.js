@@ -17,3 +17,13 @@ function scrollToSection(sectionId) {
 }
 
 map('map');
+
+// Create a new Date object to get the current date and time
+const currentDate = new Date();
+
+// Get the current date and time in a readable format
+const dateTimeString = currentDate.toLocaleString();
+
+const update = document.querySelector('#update');
+
+update.textContent = `Page last updated on: ${dateTimeString}`;
