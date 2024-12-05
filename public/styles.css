@@ -295,6 +295,7 @@ a:hover {
 
 #resource-content {
     justify-content: space-evenly;
+    text-align: center;
     max-width: max-content;
     margin: auto;
     padding: 1.5rem;
