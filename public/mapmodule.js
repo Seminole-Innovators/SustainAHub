@@ -3,11 +3,9 @@ export function map(mapId) {
     // Success function 
     async function success(position) {
 
-        // get coordinates => used for both the air quality and map 
+        // get coordinates 
         const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-
-        // Map section 
+        const longitude = position.coords.longitude;  
 
         // Icons
 
@@ -62,8 +60,6 @@ export function map(mapId) {
 
         var map = L.map(`${mapId}`).setView([latitude, longitude], 13);
 
-        // I believe that there is a problem with the map theme and it must be changed 
-
         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -91,6 +87,7 @@ export function map(mapId) {
                 return "no phone number available"
             }
         }
+
         // Place Sustainability Locations on Map
 
         fetch('/fetchLocations')
@@ -118,7 +115,7 @@ export function map(mapId) {
         });
     }
 
-    // Handle the map and air quality
+    // Make the map 
     async function makeMap() {
 
         function error() {
