@@ -38,16 +38,7 @@ app.post('/airquality', async (req, res) => {
     }
 });
 
-/*
- ==========================
-
- Construction zone! 
-
- 
- Proceed with Caution 
-
- ==========================
-*/
+// Database 
 
 // Get data from supabase hopefully 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
@@ -88,14 +79,8 @@ app.get('/fetchLocations', async (req, res) => {
       res.status(500).json({ error: err.message });
     }
   });
-/*
- ==========================
- 
- End construction zone! 
 
- ==========================
-*/
-// Hopefully scaping 
+// Scraping 
 
 /**
  * Scrapes the webpage and returns an array of text content from elements with the given class.
@@ -134,7 +119,7 @@ async function scrapePage(url, title, linkParent, date, county) {
         "county": counties[i].innerHTML.trim()
       });
     }
-    console.log(elementsList);
+    // console.log(elementsList);
     return elementsList;
   } catch (error) {
     console.error('Error scraping the website:', error);
