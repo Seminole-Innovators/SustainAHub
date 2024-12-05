@@ -29,6 +29,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
     <!-- Symbol library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Calendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js"></script>
 </head>
 <body>
     <header>
@@ -46,44 +48,12 @@
         </div>
     </header>
 
-    <!-- Main Content goes here -->
-    <div class="calendar-main">
-        <div class="calendar-container">
-            <div class="calendar-header">
-                <p class="calendar-current-date"></p>
-                <div class="calendar-navigation">
-                    <span id="calendar-prev">
-                        &lt; 
-                    </span>
-                    <span id="calendar-next">
-                        &gt;
-                    </span>
-                    </span>
-                </div>
-            </div>
-
-            <div class="calendar-body">
-                <ul class="calendar-weekdays">
-                    <li>Sun</li>
-                    <li>Mon</li>
-                    <li>Tue</li>
-                    <li>Wed</li>
-                    <li>Thu</lll;i>
-                    <li>Fri</li>
-                    <li>Sat</li>
-                </ul>
-                <ul class="calendar-dates"></ul>
-            </div>
-        </div>
-        <div class="today-event">
-            <p id="today-event"></p>
-            <p>Today there is an event happening here.</p>
-        </div>
-    </div> 
-
-   
-    
-
+    <!-- <div id="calendar"></div> -->
+     <div id="calendar-content">
+        <h2 id="events-title">Here are Some Local Environmental Events Worth Exploring</h2>
+        <div id="events"></div>
+     </div>
+     <div id="update"></div>
     <footer>
         <div class="container">
             <p>Our Patch</p>

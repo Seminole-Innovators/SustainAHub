@@ -114,168 +114,107 @@ a:hover {
 #content {
     padding: 20px;
     background-color: var(--pale-green-yellow); /* Pale greenish-yellow */
-    min-height: 300px;
+    justify-content: space-evenly;
 }
 
-/* map */ 
-#map { 
+#index-subheading {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+}
+
+#index-content {
+    justify-content: space-evenly;
+    max-width: max-content;
+    margin: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* maps */ 
+
+#map-content {
+    justify-content: space-evenly;
+    text-align: center;
+    margin: auto;
+    padding: 1.5rem;
+    flex-wrap: wrap;
+}
+
+#map { 
+    max-width: 80rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
     height: 40rem; 
     /* z-index: 1; */
 }
 
-/* calendar */ 
-.calendar-main {
-    display: flex;
-    background: var(--body-color);
-    min-height: 100vh;
-    padding: 0 10px;
-    align-items: center;
+#small-map {
+    margin-top: 2.5rem;
+    height: 20rem;
+    width: 30rem;
+}
+
+#air-quality {
+    margin-top: 2.5rem;
+    height: 20rem;
+    width: 30rem;
     justify-content: center;
-}
-
-.calendar-container {
-    background: var(--white-color);
-    width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* AH-HA! */
-
-.calendar-container div {
-    /* display: flex; */
-    align-items: center;
-    padding: 25px 100px 10px;
-    justify-content: space-evenly;
-} 
-
-div .calendar-navigation {
-    display: flex;
-}
-
-div .calendar-navigation span {
-    height: 2rem;
-    width: 2rem;
-    margin: 0 1px;
-    cursor: pointer;
-    text-align: center;
-    line-height: 38px;
-    border-radius: 50%;
-    user-select: none;
-    color: var(--orange);
-    font-size: 2rem;
-}
-
-.calendar-navigation span:last-child {
-    margin-right: -10px;
-}
-
-.calendar-navigation span:hover {
-    background: var(--body-color);
-}
-
-.calendar-current-date {
-    
-    font-weight: 550px;
-    font-size: 3rem;
-}
-
-.calendar-body {
-    padding: 25px;
-}
-
-.calendar-body ul {
-    list-style: none;
-    flex-wrap: wrap;
-    display: flex;
-    text-align: center;
-}
-
-.calendar-body .calendar-dates {
-    margin-bottom: 20px;
-}
-
-.calendar-body li {
-    width: calc(100% / 7);
-    font-size: 1.07rem;
-    color: var(--text-color);
-}
-
-.calendar-body .calendar-weekdays li {
-    cursor: default;
-    font-weight: 500;
-}
-
-.calendar-body .calendar-dates li {
-    margin-top: 30px;
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.calendar-dates li.inactive {
-    color: #aaa;
-}
-
-.calendar-dates li.active {
-    color: var(--white-color);
-}
-
-.calendar-dates li::before {
-    position: absolute;
-    content: "";
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.calendar-dates li.active::before {
-    background: var(--first-green);
-}
-
-.calendar-dates li:not(.active):hover::before {
-    background: var(--body-color);
-}
-
-.today-event {
-    margin: 10rem;
-    height: 10rem;
-    color: var(--text-color);
     text-align: center;
     font-size: 1.5rem;
-    background: var(--white-color);
-    width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-  }
+}
+
+#air-quality-number {
+    font-size: 3.5rem;
+}
+
+/* calendar */ 
+
+#small-calendar {
+    width: 30rem;
+}
+
+#calendar-content {
+    justify-content: space-evenly;
+    max-width: max-content;
+    margin: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#events {
+    justify-content: center;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
 
 /* About Us */
 
-#team {
-    margin: auto;
-    max-width: 60%;
+.descriptor {
+    margin-top: 1.5rem;
+    align-self: center;
     text-align: center;
 }
 
 .team-section {
     display: block;
-} 
+    justify-content: center;
+}
 
 .about-section {
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20rem;
+    margin: 1.5rem;
     flex-grow: 1;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-    padding: 1rem;
+    gap: 3rem;
+    padding: 1.5rem;
     text-align: center;
   }
 
@@ -350,18 +289,32 @@ div .calendar-navigation span {
     }
   } 
 
-#resourceLinks{
+
+/* resources */
+
+
+#resource-content {
+    justify-content: space-evenly;
     text-align: center;
-    background-color: white;
-    border: 10px solid green;
-    padding: 10px 10px;
-    margin: 0 420px 0 420px;
+    max-width: max-content;
+    margin: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#resourceLinks{
+    width: 30rem;
+    margin: 2.5rem;
+    text-align: center;
+    background-color: var(--white-color);
+    border: 10px solid var(--first-green);
+    padding: 10px 20px;
+
     text-decoration: none;
     a{text-decoration: none;};
     list-style: none;
-    font-size: 3em;
-    margin-bottom: 25px;
-    border-radius: 30px;
+    font-size: 1.5rem;
 } 
 
 a:hover, a:active {
@@ -401,4 +354,158 @@ a:hover, a:active {
     justify-content: space-around;
     margin-top: 20px;
     margin-left: 0;
+}
+
+
+/* */
+
+.invasives {
+    padding: 0px 0;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.invasive {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start; /* Aligns content properly */
+    background: var(--pale-green-yellow); /* Light background for invasive cards */
+    margin: 50px 0;
+    padding: 15px;
+    border-radius: 12px; /* Rounded corners for cards */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Box shadow for cards */
+    transition: transform 0.2s; /* Added background transition */
+}
+
+.invasive:hover,
+.invasive.active{
+    transform: translateY(-3px); /* Slightly raise effect on hover */
+    background: linear-gradient(135deg, var(--white-color) 70%, var(--orange) 30%);
+    transition: background 0.5s ease; /* Transition only when active */
+}
+
+.invasive-info {
+    flex: 1; /* Text section takes remaining space */
+    padding-right: 20px; /* Adds space between text and image */
+    display: flex;
+    flex-direction: column; /* Stacks the text and button vertically */
+    justify-content: space-between; /* Distributes space between elements */
+    transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth height transition */
+    overflow: hidden; /* Hide overflow to prevent content from spilling out */
+}
+
+.invasive-timeframe {
+    font-style: italic;
+    color: var(--darker-contrast-color); /* Lighter black */
+    margin-bottom: 10px;
+}
+
+.invasive-title {
+    font-size: 1.6em;
+    margin: 0 0 -5px 0; /* Space for visual separation */
+}
+
+.invasive-description {
+    font-size: 1.3em;
+    margin: 0 0 10px 0;
+    text-align: left;
+}
+
+.invasive-description-li {
+    font-size: 1.3em;
+    margin: 0 0 8px 0;
+    text-align: left;
+}
+
+.invasive-subheading {
+    font-size: 1.4em;
+    text-align: left;
+}
+
+.more-content {
+    height: 0; /* Start collapsed */
+    overflow: hidden; /* Prevent overflow */
+    transition: height 0.5s ease-in-out; /* Smooth height transition */
+}
+
+.invasive-video {
+    width: 100%; /* Make the video take full width */
+    height: 360px; /* Set a fixed height */
+    max-width: 600px; /* Set a maximum width to control the size */
+    object-fit: cover; /* Ensures aspect ratio is maintained */
+    border-radius: 12px; /* Matches the card's border radius */
+}
+
+.invasive-image {
+    width: 50%; /* Ensure the image takes full width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 300px; /* Set a maximum width to control the size */
+    margin: 0; /* Reset margin */
+    display: block; /* Make sure the image behaves like a block element */
+    border-radius: 12px; /* Matches the card's border radius */
+}
+
+.btn {
+    display: inline-block;
+    background: var(--first-green); /* Button background color */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s; /* Reduced movement on hover */
+    margin-top: 20px; /* Adds spacing above the button */
+}
+
+.read-more-link {
+    color: var(--orange); /* Link color */
+    text-decoration: underline; /* Underline the text to indicate it's a link */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin-top: 10px; /* Space above the link */
+    display: inline-block; /* Allow spacing above */
+}
+
+.read-more-link:hover {
+    text-decoration: none; /* Optionally remove underline on hover */
+}
+
+.btn:hover {
+    background: var(--darker-orange); /* Darker shade */
+    transform: scale(1.03); /* Slightly grow on hover */
+}
+
+/* Locations */ 
+
+#sustainableBusinesses {
+    justify-content: space-evenly;
+    max-width: max-content;
+    margin: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#recyclePoints {
+    justify-content: space-evenly;
+    max-width: max-content;
+    margin: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.location {
+    width: 30rem;
+    text-align: center;
+    background-color: var(--white-color);
+    border: 10px solid var(--first-green);
+    padding: 10px 20px;
+    text-decoration: none;
+    list-style: none;
+    font-size: 1.5rem;
+    margin: 1.5rem;
+}
+
+#update {
+    text-align: center;
+    margin-top: 2.5rem;
 }

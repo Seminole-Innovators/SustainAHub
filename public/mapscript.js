@@ -1,3 +1,5 @@
+import {map} from './mapmodule.js'; 
+
 // Preloader (Optional)
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
@@ -14,50 +16,14 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Map
-function geoFindMe() {
+map('map');
 
-    let LeafIcon = L.Icon.extend({
-        options: {
-            shadowUrl: 'leaf-shadow.png',
-            iconSize:     [38, 95],
-            shadowSize:   [50, 64],
-            iconAnchor:   [22, 94],
-            shadowAnchor: [4, 62],
-            popupAnchor:  [-3, -76]
-        }
-    });
+// Create a new Date object to get the current date and time
+const currentDate = new Date();
 
-    let greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'});
+// Get the current date and time in a readable format
+const dateTimeString = currentDate.toLocaleString();
 
+const update = document.querySelector('#update');
 
-    function success(position) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-
-      var map = L.map('map').setView([latitude, longitude], 13);
-
-        L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-
-        L.marker([latitude, longitude], {icon: greenIcon}).addTo(map).bindPopup("I am a green leaf.");
-    }
-  
-    function error() {
-      alert("Unable to retrieve your location.");
-    }
-
-    const options = {
-        enableHighAccuracy: true,
-    };
-  
-    if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser.)");
-    } else {
-      navigator.geolocation.getCurrentPosition(success, error, options);
-    }
-  }
-  
-geoFindMe();
+update.textContent = `Page last updated on: ${dateTimeString}`;
