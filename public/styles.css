@@ -310,7 +310,9 @@ a:hover {
     background-color: var(--white-color);
     border: 10px solid var(--first-green);
     padding: 10px 20px;
+
     text-decoration: none;
+    a{text-decoration: none;};
     list-style: none;
     font-size: 1.5rem;
 } 
@@ -323,14 +325,14 @@ a:hover, a:active {
 .text-box {
     background-color: #f2f2f2;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 30px;
     width: 45%;
 }
 
 .image-box {
     background-color: #f2f2f2;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 30px;
     width: 45%;
     display: flex;
     flex-wrap: wrap;
