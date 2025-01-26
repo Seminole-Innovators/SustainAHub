@@ -89,8 +89,6 @@ app.get('/fetchLocations', async (req, res) => {
  * @returns {Promise<Array<string>>} - A promise that resolves to an array of text content.(, link, time, location)
  */
 async function scrapePage(url, title, linkParent, date, county) {
-  const { JSDOM } = require('jsdom');
-  const axios = require('axios');
   try {
     // Fetch the HTML content of the page using axios
     const response = await axios.get(url);
