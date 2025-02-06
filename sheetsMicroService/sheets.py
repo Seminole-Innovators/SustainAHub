@@ -12,7 +12,7 @@ sheet = client.open_by_key(sheet_id)
 
 worksheet = sheet.sheet1
 
-# Get all values from the sheet (list of lists, each inner list is a row)
+# Get all values from the sheet (list of lists, each inner list is a row) 
 rows = worksheet.get_all_values()
 
 # Convert rows to a dictionary (optional, you could customize this)
