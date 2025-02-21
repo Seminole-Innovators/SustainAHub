@@ -20,7 +20,7 @@ export function map(mapId) {
             }
         });
 
-        let greenIcon = new LeafIcon({iconUrl: 'leaf-green.png'});
+        let greenIcon = new LeafIcon({iconUrl: '../icons/leaf-green.png'});
 
         // Icons for locations on map 
 
@@ -32,31 +32,31 @@ export function map(mapId) {
 
         // Parks
 
-        let parkIcon = new customMarker({iconUrl: 'parkIcon.png'});
+        let parkIcon = new customMarker({iconUrl: '../icons/parkIcon.png'});
 
         // Businesss Icon 
 
-        let businessIcon= new customMarker({iconUrl: 'businessIcon.png'});
+        let businessIcon= new customMarker({iconUrl: '../icons/businessIcon.png'});
 
         // Charging Icon 
 
-        let electricVehicleIcon= new customMarker({iconUrl: 'chargingIcon.png'});
+        let electricVehicleIcon= new customMarker({iconUrl: '../icons/chargingIcon.png'});
 
         // Farming icon
 
-        let farmIcon = new customMarker({iconUrl: 'farmIcon.png'}); 
+        let farmIcon = new customMarker({iconUrl: '../icons/farmIcon.png'}); 
 
         // Farmers market icon 
 
-        let farmersMarketIcon = new customMarker({iconUrl: 'marketIcon.png'}); 
+        let farmersMarketIcon = new customMarker({iconUrl: '../icons/marketIcon.png'}); 
 
         // Garden icon 
 
-        let gardenIcon = new customMarker({iconUrl: 'gardenIcon.png'});
+        let gardenIcon = new customMarker({iconUrl: '../icons/gardenIcon.png'});
 
         // recycling icon 
 
-        let recyclingIcon = new customMarker({iconUrl: 'recycleIcon.png'});
+        let recyclingIcon = new customMarker({iconUrl: '../icons/recycleIcon.png'});
 
         var map = L.map(`${mapId}`).setView([latitude, longitude], 13);
 
