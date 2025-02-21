@@ -6,3 +6,4 @@ package-lock.json
 .idea/modules.xml
 .idea/SustainAHub.iml
 .idea/vcs.xml
+.idea/jsLibraryMappings.xml
