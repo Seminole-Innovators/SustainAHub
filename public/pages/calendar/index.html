@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Patch - Resources</title>
+    <title>Our Patch - Calendar</title>
 
     <!-- Favicon (small icon on tab)-->
     <link rel="icon" type="image/png" href="" sizes="32x32">
@@ -24,11 +24,13 @@
     <link rel="apple-touch-icon" href="">
     
     <!-- Links to stylesheet (CSS) -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
     <!-- Symbol library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Calendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js"></script>
 </head>
 <body>
     <header>
@@ -36,35 +38,27 @@
             <h1>Our Patch</h1>
             <nav>
                 <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="map.html">Map</a></li>
-                    <li><a href="calendar.html">Calendar</a></li>
-                    <li><a href="resources.html" class="active">Resources</a></li> <!-- Link to Resources page -->
-                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="../../">Home</a></li>
+                    <li><a href="../map/">Map</a></li>
+                    <li><a href="" class="active">Calendar</a></li>
+                    <li><a href="../resources/">Resources</a></li> <!-- Link to Resources page -->
+                    <li><a href="../aboutus/">About Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content goes here -->
-    <div id="resource-content">
-        <!--Content goes here-->
-
-        <h2>Here are some great resources for getting started with sustainability</h2>
-        <div id="resource-list">
-            <p id="resourceLinks"><a href="Links/InvasivePlantGuide.html">Invasive Plants Guide</a></p>
-            <p id="resourceLinks"><a href="Links/RecyclePoints.html">Recycle Points</a><br></li>
-            <p id="resourceLinks"><a href="Links/SustainableBusinesses.html">Sustainable Businesses</a><br></p>
-            <p id="resourceLinks"><a href="Links/StudentGuide.html">Student Move-Out Guide</a><br></p>
-            <p id="resourceLinks"><a href="Links/ExternalResources.html">External Resources</a><br></p>
-        </div>
-    </div>
-    <div id="update"></div>
+    <!-- <div id="calendar"></div> -->
+     <div id="calendar-content">
+        <h2 id="events-title">Here are Some Local Environmental Events Worth Exploring</h2>
+        <div id="events"></div>
+     </div>
+     <div id="update"></div>
     <footer>
         <div class="container">
             <p>Our Patch</p>
         </div>
     </footer>
 </body>
-<script src="../scripts/index.js" type="module"></script>
+<script src="../../scripts/calendarscript.js"></script>
 </html>
