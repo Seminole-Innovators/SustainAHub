@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Patch - Map</title>
+    <title>Our Patch - Resources</title>
 
     <!-- Favicon (small icon on tab)-->
     <link rel="icon" type="image/png" href="" sizes="32x32">
@@ -24,20 +24,11 @@
     <link rel="apple-touch-icon" href="">
     
     <!-- Links to stylesheet (CSS) -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
     <!-- Symbol library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-
 </head>
 <body>
     <header>
@@ -45,21 +36,28 @@
             <h1>Our Patch</h1>
             <nav>
                 <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="map.html" class="active">Map</a></li>
-                    <li><a href="calendar.html">Calendar</a></li>
-                    <li><a href="resources.html">Resources</a></li> <!-- Link to Resources page -->
-                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="../../">Home</a></li>
+                    <li><a href="../map/">Map</a></li>
+                    <li><a href="../calendar/">Calendar</a></li>
+                    <li><a href="" class="active">Resources</a></li> <!-- Link to Resources page -->
+                    <li><a href="../aboutus/">About Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Main Content goes here -->
-    <div id="map-content">
-        <h2>Use this interactive map to find parks, recycle points, gardens, sustainable farms, sustainable businesses, and markets in the Tallahassee area!</h2>
+    <div id="resource-content">
         <!--Content goes here-->
-        <div id="map"></div>
+
+        <h2>Here are some great resources for getting started with sustainability</h2>
+        <div id="resource-list">
+            <p id="resourceLinks"><a href="Links/InvasivePlantGuide.html">Invasive Plants Guide</a></p>
+            <p id="resourceLinks"><a href="Links/RecyclePoints.html">Recycle Points</a><br></li>
+            <p id="resourceLinks"><a href="Links/SustainableBusinesses.html">Sustainable Businesses</a><br></p>
+            <p id="resourceLinks"><a href="Links/StudentGuide.html">Student Move-Out Guide</a><br></p>
+            <p id="resourceLinks"><a href="Links/ExternalResources.html">External Resources</a><br></p>
+        </div>
     </div>
     <div id="update"></div>
     <footer>
@@ -68,5 +66,5 @@
         </div>
     </footer>
 </body>
-<script src="../scripts/mapscript.js" type="module"></script>
+<script src="../../scripts/index.js" type="module"></script>
 </html>
