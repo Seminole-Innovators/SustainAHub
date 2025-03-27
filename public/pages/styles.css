@@ -35,18 +35,22 @@ body {
 
 /* Header styling */
 header {
-    /* position: sticky; */
+    position: sticky;
     top: 0;
-    background-color: var(--first-green); /* Green */
-    padding: 10px 0;
+    background-color: var(--first-green);
+    padding: 0; /* No extra space */
     color: var(--white-color);
     text-align: center;
-    /* z-index: 100; */
-}
+  }
 
 h1 {
-    font-size: 5em;
+    font-size: 3em;
     color: var(--white-color); /* Optional styling */
+}
+
+h3 {
+    font-size: 1em;
+    text-align: center;
 }
 
 /* Style the navigation links as buttons */
