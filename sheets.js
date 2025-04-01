@@ -54,4 +54,4 @@ async function getSheetData() {
 
 setInterval(getSheetData, 86400000); // every 24 hours
 
-getSheetData(); 
+// getSheetData(); 

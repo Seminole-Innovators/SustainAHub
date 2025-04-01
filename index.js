@@ -145,7 +145,7 @@ app.get('/fetchEvents', async (req, res) => {
 // scrapePage('https://floridadep.gov/events-list/month?field_county_tid=36&field_is_a_public_notice_value=All', 'views-field-title', 'field-content', 'views-field-field-events-date', 'views-field-field-county');
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3500;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
