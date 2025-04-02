@@ -1,4 +1,4 @@
-import {map} from './mapmodule.js'; 
+import { map } from './mapmodule.js'; 
 
 // Preloader (Optional)
 window.addEventListener('load', () => {

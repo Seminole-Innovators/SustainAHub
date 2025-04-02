@@ -51,14 +51,22 @@ export function map(mapId) {
             });
         }
 
-        // Fetch and place locations
+        // Fetch and place parks
         fetch('/fetchParks')
             .then(response => response.json())
-            .then(jsonData => addMarkersToMap(jsonData, 'park', parkIcon));
+            .then(jsonData => {
+                console.log("Parks data:", jsonData);  // Log the fetched parks data
+                addMarkersToMap(jsonData, 'park', parkIcon);
+            })
+            .catch(error => {
+                console.error("Error fetching parks:", error);
+            });
 
+        // Fetch and place other locations
         fetch('/fetchLocations')
             .then(response => response.json())
             .then(jsonData => {
+                console.log("Locations data:", jsonData);  // Log the fetched locations data
                 jsonData.forEach(location => {
                     switch (location.loc_class) {
                         case 'Sustainable Business':
@@ -81,6 +89,9 @@ export function map(mapId) {
                             break;
                     }
                 });
+            })
+            .catch(error => {
+                console.error("Error fetching locations:", error);
             });
 
         // Filter functionality
@@ -124,4 +135,5 @@ export function map(mapId) {
         navigator.geolocation.getCurrentPosition(success, error, options);
     }
 }
+
 

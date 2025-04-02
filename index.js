@@ -45,40 +45,44 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY
 
 // route to handle frontend requests
 app.get('/fetchLocations', async (req, res) => {
-    try {
-      // Query data from Supabase (replace with your table and fields)
+  try {
       const { data, error } = await supabase
-        .from('locations')  
-        .select('*'); 
-  
+          .from('locations')
+          .select('*');
+      
       if (error) {
-        return res.status(500).json({ error: error.message });
+          console.error("Supabase error:", error);  // Log the error
+          return res.status(500).json({ error: error.message });
       }
-  
-      // Send the data as JSON to the client
-      res.json(data);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  });
 
-  app.get('/fetchParks', async (req, res) => {
-    try {
-      // Query data from Supabase (replace with your table and fields)
-      const { data, error } = await supabase
-        .from('parks')  
-        .select('*'); 
-  
-      if (error) {
-        return res.status(500).json({ error: error.message });
-      }
-  
-      // Send the data as JSON to the client
       res.json(data);
-    } catch (err) {
+  } catch (err) {
+      console.error("Unhandled error in fetchLocations:", err);  // Log the full error
       res.status(500).json({ error: err.message });
-    }
-  });
+  }
+});
+
+app.get('/fetchParks', async (req, res) => {
+  try {
+      const { data, error } = await supabase
+          .from('parks')
+          .select('*');
+      
+      if (error) {
+          console.error("Supabase error:", error);  // Log the error
+          return res.status(500).json({ error: error.message });
+      }
+
+      res.json(data);
+      console.log("Parks data:", data);  // Log the fetched data
+  } catch (err) {
+      console.error("Unhandled error in fetchParks:", err);  // Log the full error
+      res.status(500).json({ error: err.message });
+  }
+});
+console.log("Supabase URL:", process.env.SUPABASE_URL);
+console.log("Supabase Key:", process.env.SUPABASE_KEY);
+
 
 // Scraping 
 
@@ -145,7 +149,7 @@ app.get('/fetchEvents', async (req, res) => {
 // scrapePage('https://floridadep.gov/events-list/month?field_county_tid=36&field_is_a_public_notice_value=All', 'views-field-title', 'field-content', 'views-field-field-events-date', 'views-field-field-county');
 
 // Start the server
-const PORT = process.env.PORT || 3500;
+const PORT = process.env.PORT || 3456;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
