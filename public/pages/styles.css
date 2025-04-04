@@ -163,6 +163,12 @@ a:hover {
     width: 30rem;
 }
 
+#events-map {
+    margin-top: 2.5rem;
+    height: 20rem;
+    width: 30rem;
+}
+
 #air-quality {
     margin-top: 2.5rem;
     height: 20rem;

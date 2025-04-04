@@ -35,6 +35,7 @@ export function map(mapId) {
         const markers = {
             park: [],
             recycle: [],
+            evCharging: [],
             garden: [],
             farm: [],
             business: [],
@@ -73,7 +74,7 @@ export function map(mapId) {
                             addMarkersToMap([location], 'business', businessIcon);
                             break;
                         case 'Electric Vehicle Charging Station':
-                            addMarkersToMap([location], 'recycle', electricVehicleIcon);
+                            addMarkersToMap([location], 'evCharging', electricVehicleIcon);
                             break;
                         case 'Regional Farm':
                             addMarkersToMap([location], 'farm', farmIcon);
