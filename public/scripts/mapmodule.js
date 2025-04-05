@@ -42,12 +42,22 @@ export function map(mapId) {
             market: []
         };
 
+        // Function to determine if it is a park or other location type 
+
+        function sortType(location) {
+            if (location.name) {
+                return `<b>${location.name}</b> <br> ${location.loc_class} <br> ${location.loc_addr1}, ${location.loc_addr2}`;
+            } else {
+                return `<b>${location.park_name}</b> <br> ${location.address}`
+            }
+        }
+
         // Function to fetch and add markers
         function addMarkersToMap(locations, type, icon) {
             locations.forEach(location => {
                 let marker = L.marker([location.geom.coordinates[1], location.geom.coordinates[0]], { icon: icon })
                     .addTo(map)
-                    .bindPopup(`<b>${location.name}</b> <br> ${location.loc_class} <br> ${location.loc_addr1}, ${location.loc_addr2}`);
+                    .bindPopup(sortType(location));
                 markers[type].push(marker);
             });
         }
