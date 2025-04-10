@@ -30,57 +30,6 @@
         html, body {
             height: 100%;
         }
-        .logo {
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: visible;
-            margin: 0;
-            padding: 0;
-        }
-        .logo img {
-            height: 100%;
-            transform: scale(2.5);
-            transform-origin: center;
-        }
-        nav {
-            margin-top: -10px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        nav ul li {
-            display: inline-block;
-        }
-        .nav-img-button {
-            background-color: transparent !important;
-            padding: 0 !important;
-            border-radius: 0 !important;
-            color: inherit !important;
-        }
-
-        .nav-img-button img {
-            display: block;
-            width: 120px;
-            height: auto;
-            transition: transform 0.25s ease-in-out;
-            border: none;
-            background: none;
-        }
-        .nav-img-button img {
-            display: block;
-            width: 130px;
-            height: auto;
-            transition: transform 0.25s ease-in-out;
-        }
-        .nav-img-button:hover img {
-            transform: scale(1.15); /* image enlarges on hover */
-        }
         body {
             display: flex;
             flex-direction: column;
@@ -107,7 +56,7 @@
             flex: 0 0 35%;
             overflow-y: auto;
             padding: 10px;
-            background-color: var(--pale-green-yellow);
+            background: url('../icons/bg/eventsBg.jpg') no-repeat center center;
             min-width: 250px;
             max-width: 70%;
         }
@@ -133,16 +82,36 @@
             color: #555;
         }
         .event-card {
-            background: var(--white-color);
+            position: relative;
+            background: url('../icons/bg/cardTexture.jpg') center center;
+            background-size: cover;
             border-radius: 10px;
             margin-bottom: 10px;
             padding: 10px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.5); /* Adjust alpha for lightness */
+            z-index: 0;
+        }
+
+        .event-card > * {
+            position: relative;
+            z-index: 1;
         }
         .card-header {
+            font-size: 1.4rem;
             font-weight: bold;
             margin-bottom: 5px;
+        }
+        .event-card p {
+            font-size: 1.1rem;
         }
         .expandable-info {
             display: none;
@@ -153,12 +122,26 @@
         }
         .expand-btn {
             margin-top: 5px;
+            font-size: 1rem;
             cursor: pointer;
             background-color: var(--first-green);
             color: white;
             border: none;
             border-radius: 5px;
             padding: 5px 10px;
+        }
+        #calendar-content {
+            color: #000; /* black text */
+        }
+        
+
+        #calendar-content p,
+        #calendar-content h1,
+        #calendar-content h2,
+        #calendar-content h3,
+        #calendar-content .event-card,
+        #calendar-content .card-header {
+            color: #000;
         }
     </style>
 </head>
@@ -220,14 +203,14 @@
 
     <script>
         const exampleEvents = [
-          { id: 1, name: "Tallahassee Farmers Market", date: "2025-03-23", location: "Market Square Park", description: "A weekly event featuring local vendors, fresh produce, and live music." },
-          { id: 2, name: "Park Clean-up Day", date: "2025-03-25", location: "Cascades Park", description: "Join us for a volunteer clean-up to keep the park beautiful for the community." },
-          { id: 3, name: "Sustainability Workshop", date: "2025-03-30", location: "FSU Innovation Hub", description: "Learn practical sustainability tips from local experts and community leaders." },
-          { id: 4, name: "Nature Walk & Birdwatching", date: "2025-04-02", location: "Apalachicola National Forest", description: "A guided nature walk and birdwatching event for all ages." },
-          { id: 5, name: "Green Energy Fair", date: "2025-04-10", location: "Tallahassee Civic Center", description: "Exhibits and talks on renewable energy solutions and technology." },
-          { id: 6, name: "Community Garden Planting", date: "2025-04-15", location: "Lake Ella", description: "Help us plant and maintain our local community garden." },
-          { id: 7, name: "Composting 101 Workshop", date: "2025-04-20", location: "FSU Sustainability Center", description: "Learn how to start composting at home and reduce waste." },
-          { id: 8, name: "Earth Day Celebration", date: "2025-04-22", location: "Downtown Tallahassee", description: "A full day of eco-friendly activities, music, and food trucks." }
+          { id: 1, name: "Seminole Innovators Showcase", date: "4/18/2025", location: "FSU Innovation Hub", description: "Join us for the unveiling of Our Patch!" },
+          { id: 2, name: "Park Clean-up Day", date: "8/25/2025", location: "Cascades Park", description: "Join us for a volunteer clean-up to keep the park beautiful for the community." },
+          { id: 3, name: "Sustainability Workshop", date: "8/30/2025", location: "FSU Innovation Hub", description: "Learn practical sustainability tips from local experts and community leaders." },
+          { id: 4, name: "Nature Walk & Birdwatching", date: "9/02/2025", location: "Apalachicola National Forest", description: "A guided nature walk and birdwatching event for all ages." },
+          { id: 5, name: "Green Energy Fair", date: "09/10/2025", location: "Tallahassee Civic Center", description: "Exhibits and talks on renewable energy solutions and technology." },
+          { id: 6, name: "Community Garden Planting", date: "09/15/2025", location: "Lake Ella", description: "Help us plant and maintain our local community garden." },
+          { id: 7, name: "Composting 101 Workshop", date: "09/20/2025", location: "FSU Sustainability Center", description: "Learn how to start composting at home and reduce waste." },
+          { id: 8, name: "Earth Day Celebration", date: "09/22/2025", location: "Downtown Tallahassee", description: "A full day of eco-friendly activities, music, and food trucks." }
         ];
 
         function loadEvents() {
