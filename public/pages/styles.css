@@ -8,7 +8,7 @@
 /* variables */ 
 :root {
     --body-color: #f7f2e7;
-    --text-color: #333;
+    --text-color: #ffffff;
     --darker-contrast-color: #2c3e50;
     --first-green: #4CAF50;
     --second-green: #3e8e41;
@@ -33,23 +33,120 @@ body {
     margin: 0 auto;
 }
 
-/* Header styling */
 header {
-    /* position: sticky; */
+    position: sticky;
     top: 0;
-    background-color: var(--first-green); /* Green */
-    padding: 10px 0;
+    background: url("../icons/bg/bgHead.png") no-repeat center 40%;
+    background-size: cover;
     color: var(--white-color);
     text-align: center;
-    /* z-index: 100; */
+    padding: 0;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+  
+  header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+  }
+
+  header .container {
+    position: relative;
+    z-index: 1;
+  }
 
 h1 {
-    font-size: 5em;
+    font-size: 3em;
     color: var(--white-color); /* Optional styling */
 }
 
-/* Style the navigation links as buttons */
+h3 {
+    font-size: 1em;
+    text-align: center;
+}
+
+body.middle-bg {
+    position: relative;
+    background: url("../icons/bg/bgMiddle.png") no-repeat center 40%;
+    background-size: cover;
+    background-color: #f7f2e7; /* fallback */
+    z-index: 0;
+}
+
+body.middle-bg::before {
+    content: "";
+    position: fixed; /* cover entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* adjust darkness */
+    z-index: -1;
+}
+
+
+.logo {
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    margin: 0;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.logo img {
+    height: 100%;
+    transform: scale(2.5);
+    transform-origin: center;
+    pointer-events: none;
+}
+
+nav {
+    margin-top: -10px;
+}
+
+.image-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.nav-img-button {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    color: inherit !important;
+    border: none;
+}
+
+.nav-img-button img {
+    display: block;
+    width: 130px;
+    height: auto;
+    transition: transform 0.25s ease-in-out;
+    border: none;
+    background: none;
+}
+
+.nav-img-button:hover img {
+    transform: scale(1.15);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.nav-img-button.active img {
+    transform: scale(1.2);
+}
+
 nav ul {
     list-style: none;
     margin-top: 1px;
@@ -87,21 +184,46 @@ nav ul li a:hover {
 nav ul li a:active {
     background-color: var(--second-green); /* Darker green */
 }
-
-/* Footer styling */
-footer {
-    background-color: var(--darker-contrast-color); /* Darker contrast color */
+/* === IMAGE FOOTER: Only applies when body has the .custom-footer class === */
+body.custom-footer footer {
+    position: relative;
+    background: none;
+    height: 130px; /* or match your footerBg.png */
+    color: var(--white-color);
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 15px;
+    margin-top: 10px;
+    z-index: 1;
+    overflow: hidden;
+}
+body.custom-footer footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../icons/bg/footerBg.png") no-repeat center top;
+    background-size: 100% 130px;
+    filter: brightness(0.7);
+    z-index: 0;
+}
+body.custom-footer footer .container {
+    position: relative;
+    z-index: 1;
+}
+/* === DEFAULT FOOTER: Applies when .custom-footer is not present === */
+body:not(.custom-footer) footer {
+    background-color: var(--darker-contrast-color);
     color: var(--white-color);
     text-align: center;
     padding: 15px 0;
     margin-top: 40px;
-}
-
-footer p {
     font-size: 0.9rem;
 }
-
-/* Fun accent colors for links */
+footer p {
+    font-size: 1em;
+}
 a {
     color: var(--orange); /* Orange */
 }

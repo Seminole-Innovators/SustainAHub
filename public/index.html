@@ -37,33 +37,52 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
-
-     <!-- Calendar -->
-     <script src="https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js"></script>
 </head>
-<body>
+<body class="middle-bg custom-footer">
     <header>
         <div class="container">
-            <h1>Our Patch</h1>
+            <h1 class="logo">
+                <img src="../icons/ourpatch2.png" alt="Our Patch Logo">
+              </h1>
             <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="pages/map.html">Locations</a></li>
-                    <li><a href="pages/calendar.html">Events</a></li>
-                    <li><a href="pages/aboutus.html">About Us</a></li>
-                    <li><a href="pages/contact.html">Contact</a></li>
+                <ul class="image-nav">
+                  <li>
+                    <a href="../index.html" class="nav-img-button">
+                      <img src="/icons/homeIcon.png" alt="Home">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="pages/map.html" class="nav-img-button">
+                      <img src="/icons/locationsIcon.png" alt="Locations">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="pages/calendar.html" class="nav-img-button">
+                      <img src="/icons/eventsIcon.png" alt="Events">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="pages/aboutus.html" class="nav-img-button">
+                      <img src="/icons/aboutIcon.png" alt="About Us">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="pages/contact.html" class="nav-img-button">
+                      <img src="/icons/contactIcon.png" alt="Contact">
+                    </a>
+                  </li>
                 </ul>
-            </nav>
+              </nav>              
         </div>
     </header>
 
     <div id="index-subheading">
         <h2>Welcome to Our Patch!</h2>
+        <h3>OUR PATCH INFO</h3>
     </div>
 
-    <!-- Main Content goes here -->
+    <!-- Not going to be used anymore -->
     <div id="index-content">
-        <!--Content goes here-->
         <div id="small-map"></div>
         <div id="air-quality">
             Your Air Quality 
@@ -76,10 +95,10 @@
     
     <div id="update"></div>
     <footer>
-        <div class="container">
-            <p>Our Patch</p>
-        </div>
-    </footer>
+      <div class="container">
+        <p>Our Patch &copy; 2025</p>
+      </div>
+    </footer>      
 </body>
 <script src="scripts/index.js" type="module"></script>
 </html>
