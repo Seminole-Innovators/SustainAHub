@@ -41,7 +41,7 @@ header {
     color: var(--white-color);
     text-align: center;
     padding: 0;
-    height: 170px;
+    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,7 +72,15 @@ h3 {
 
 body.middle-bg {
     position: relative;
-    background: url("../icons/bg/bgMiddle.png") no-repeat center 40%;
+    background: url("../icons/bg/bgMiddle.png") no-repeat center top 20%;
+    background-size: cover;
+    background-color: #f7f2e7; /* fallback */
+    z-index: 0;
+}
+
+body.bg {
+    position: relative;
+    background: url("../icons/bg/plainBg.png") no-repeat center top 20%;
     background-size: cover;
     background-color: #f7f2e7; /* fallback */
     z-index: 0;
@@ -85,7 +93,7 @@ body.middle-bg::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* adjust darkness */
+    /* background-color: rgba(0, 0, 0, 0.3); /* adjust darkness */
     z-index: -1;
 }
 
@@ -99,6 +107,7 @@ body.middle-bg::before {
     margin: 0;
     padding-bottom: 20px;
     padding-top: 20px;
+    margin-top: 20px;
 }
 
 .logo img {
@@ -116,6 +125,7 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -131,7 +141,7 @@ nav {
 
 .nav-img-button img {
     display: block;
-    width: 130px;
+    width: 120px;
     height: auto;
     transition: transform 0.25s ease-in-out;
     border: none;
@@ -188,14 +198,14 @@ nav ul li a:active {
 body.custom-footer footer {
     position: relative;
     background: none;
-    height: 130px; /* or match your footerBg.png */
+    height: 180px;
     color: var(--white-color);
     text-align: center;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 15px;
-    margin-top: 10px;
+    margin-top: 50px;
     z-index: 1;
     overflow: hidden;
 }
@@ -203,9 +213,9 @@ body.custom-footer footer::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../icons/bg/footerBg.png") no-repeat center top;
-    background-size: 100% 130px;
-    filter: brightness(0.7);
+    background: url("../icons/bg/footerBg.png") no-repeat center top;;
+    background-size: 100% 360px;
+    /* filter: brightness(0.7); */
     z-index: 0;
 }
 body.custom-footer footer .container {
@@ -222,7 +232,7 @@ body:not(.custom-footer) footer {
     font-size: 0.9rem;
 }
 footer p {
-    font-size: 1em;
+    font-size: 1.2em;
 }
 a {
     color: var(--orange); /* Orange */
