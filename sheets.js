@@ -1,7 +1,9 @@
 const { google } = require('googleapis');
+const { geocode } = require('./services/geocodeService');
 const fs = require('fs');
 const path = require('path');
 const { GoogleAuth } = require('google-auth-library');
+const supabase = require('./supabaseClient');
 
 // Path to your service account credentials file
 const CREDENTIALS_PATH = 'credentials.json';
@@ -41,9 +43,19 @@ async function getSheetData() {
                 return record;
             });
 
-            // Save the data to a JSON file
-            fs.writeFileSync('data.json', JSON.stringify(data, null, 4));
-            console.log('Data has been saved to data.json');
+            // insert data into database 
+            const { error } = await supabase
+                .from('events')
+                .upsert(data, {
+                    onConflict: ['eventName']
+                });
+            
+            const coords = []; 
+            if (error) {
+                console.error('Error inserting data into Supabase:', error);
+            } else {
+                console.log('Data successfully inserted into Supabase');
+            }
         } else {
             console.log('No data found.');
         }
@@ -52,6 +64,5 @@ async function getSheetData() {
     }
 }
 
-setInterval(getSheetData, 86400000); // every 24 hours
-
-// getSheetData(); 
+getSheetData()
+module.exports = getSheetData;
