@@ -17,9 +17,6 @@
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
-
     <!-- Symbol library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -82,19 +79,41 @@
         }
     </style>
 </head>
-<body>
+<body class="bg">
     <header>
         <div class="container">
-            <h1>Our Patch</h1>
+            <h1 class="logo">
+                <img src="../icons/ourpatch2.png" alt="Our Patch Logo">
+              </h1>
             <nav>
-                <ul>
-                    <li><a href="../index.html" class="active">Home</a></li>
-                    <li><a href="map.html">Locations</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                <ul class="image-nav">
+                  <li>
+                    <a href="../index.html" class="nav-img-button">
+                      <img src="../icons/homeIcon.png" alt="Home">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="map.html" class="nav-img-button">
+                      <img src="../icons/locationsIcon.png" alt="Locations">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="calendar.html" class="nav-img-button active">
+                      <img src="../icons/eventsIcon.png" alt="Events">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="aboutus.html" class="nav-img-button">
+                      <img src="../icons/aboutIcon.png" alt="About Us">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="contact.html" class="nav-img-button">
+                      <img src="../icons/contactIcon.png" alt="Contact">
+                    </a>
+                  </li>
                 </ul>
-            </nav>
+              </nav>              
         </div>
     </header>
 
@@ -105,7 +124,7 @@
             </aside>
             <div class="resizer-bar"></div>
             <div class="map-column">
-                <div id="events-map"></div>
+                <div id="map"></div>
             </div>
         </section>
     </div>
