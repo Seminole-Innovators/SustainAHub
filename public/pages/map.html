@@ -25,8 +25,7 @@
     
     <!-- Links to stylesheet (CSS) -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+    
     <!-- Symbol library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -37,19 +36,41 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 </head>
-<body>
+<body class="custom-footer bg">
     <header>
         <div class="container">
-            <h1>Our Patch</h1>
+            <h1 class="logo">
+                <img src="../icons/ourpatch2.png" alt="Our Patch Logo">
+              </h1>
             <nav>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="map.html" class="active">Locations</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                <ul class="image-nav">
+                  <li>
+                    <a href="../index.html" class="nav-img-button">
+                      <img src="../icons/homeIcon.png" alt="Home">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="map.html" class="nav-img-button active">
+                      <img src="../icons/locationsIcon.png" alt="Locations">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="events.html" class="nav-img-button">
+                      <img src="../icons/eventsIcon.png" alt="Events">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="aboutus.html" class="nav-img-button">
+                      <img src="../icons/aboutIcon.png" alt="About Us">
+                    </a>
+                  </li>
+                  <li>
+                    <a href="contact.html" class="nav-img-button">
+                      <img src="../icons/contactIcon.png" alt="Contact">
+                    </a>
+                  </li>
                 </ul>
-            </nav>
+              </nav>              
         </div>
     </header>
 
@@ -71,7 +92,7 @@
     <div id="update"></div>
     <footer>
         <div class="container">
-            <p>Our Patch</p>
+          <p>Our Patch &copy; 2025</p>
         </div>
     </footer>
 </body>
