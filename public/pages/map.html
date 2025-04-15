@@ -31,11 +31,9 @@
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 </head>
 <body class="custom-footer bg">
@@ -57,7 +55,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="calendar.html" class="nav-img-button">
+                    <a href="events.html" class="nav-img-button">
                       <img src="../icons/eventsIcon.png" alt="Events">
                     </a>
                   </li>
@@ -79,7 +77,16 @@
     <!-- Main Content goes here -->
     <div id="map-content">
         <h2>Use this interactive map to find parks, recycle points, gardens, sustainable farms, sustainable businesses, and markets in the Tallahassee area!</h2>
-        <!--Content goes here-->
+        <div id="filter-options">
+            <h2>Filter Locations:</h2>
+            <label><input type="checkbox" name="filter" value="park" checked> Parks</label><br>
+            <label><input type="checkbox" name="filter" value="evCharging" checked> Electric Vehicle Charging Stations</label><br>
+            <label><input type="checkbox" name="filter" value="recycle" checked> Recycling Points</label><br>
+            <label><input type="checkbox" name="filter" value="garden" checked> Gardens</label><br>
+            <label><input type="checkbox" name="filter" value="farm" checked> Sustainable Farms</label><br>
+            <label><input type="checkbox" name="filter" value="business" checked> Sustainable Businesses</label><br>
+            <label><input type="checkbox" name="filter" value="market" checked> Markets</label><br>
+        </div>
         <div id="map"></div>
     </div>
     <div id="update"></div>
