@@ -27,66 +27,7 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        html, body {
-            height: 100%;
-        }
-        .logo {
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: visible;
-            margin: 0;
-            padding: 0;
-        }
-        .logo img {
-            height: 100%;
-            transform: scale(2.5);
-            transform-origin: center;
-        }
-        nav {
-            margin-top: -10px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        nav ul li {
-            display: inline-block;
-        }
-        .nav-img-button {
-            background-color: transparent !important;
-            padding: 0 !important;
-            border-radius: 0 !important;
-            color: inherit !important;
-        }
-
-        .nav-img-button img {
-            display: block;
-            width: 120px;
-            height: auto;
-            transition: transform 0.25s ease-in-out;
-            border: none;
-            background: none;
-        }
-        .nav-img-button img {
-            display: block;
-            width: 130px;
-            height: auto;
-            transition: transform 0.25s ease-in-out;
-        }
-        .nav-img-button:hover img {
-            transform: scale(1.15); /* image enlarges on hover */
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        #calendar-content.columns-layout {
+        /* #calendar-content.columns-layout {
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -95,42 +36,21 @@
             width: 100%;
             max-width: none;
             padding: 0;
-        }
-        section.columns-container {
+        } */
+        /* section.columns-container {
             display: flex;
             flex: 1;
             overflow: hidden;
             width: 100%;
             border: 2px solid #bbb;
-        }
-        aside.event-column {
+        } */
+        div.event-column {
             flex: 0 0 35%;
             overflow-y: auto;
             padding: 10px;
             background-color: var(--pale-green-yellow);
             min-width: 250px;
             max-width: 70%;
-        }
-        div.resizer-bar {
-            width: 6px;
-            cursor: ew-resize;
-            background: #888;
-        }
-        main.map-column {
-            flex: 1;
-            overflow: hidden;
-            position: relative;
-            min-width: 250px;
-        }
-        #map {
-            width: 100%;
-            height: 100%;
-            background-color: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #555;
         }
         .event-card {
             background: var(--white-color);
@@ -165,38 +85,16 @@
 <body>
     <header>
         <div class="container">
-            <h1 class="logo">
-                <img src="../icons/ourpatch2.png" alt="Our Patch Logo">
-              </h1>
+            <h1>Our Patch</h1>
             <nav>
-                <ul class="image-nav">
-                  <li>
-                    <a href="../index.html" class="nav-img-button">
-                      <img src="../icons/homeIcon.png" alt="Home">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="map.html" class="nav-img-button">
-                      <img src="../icons/locationsIcon.png" alt="Locations">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="events.html" class="nav-img-button">
-                      <img src="../icons/eventsIcon.png" alt="Events">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="aboutus.html" class="nav-img-button">
-                      <img src="../icons/aboutIcon.png" alt="About Us">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="contact.html" class="nav-img-button">
-                      <img src="../icons/contactIcon.png" alt="Contact">
-                    </a>
-                  </li>
+                <ul>
+                    <li><a href="../index.html" class="active">Home</a></li>
+                    <li><a href="map.html">Locations</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
-              </nav>              
+            </nav>
         </div>
     </header>
 

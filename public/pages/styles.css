@@ -41,6 +41,7 @@ header {
     padding: 0; /* No extra space */
     color: var(--white-color);
     text-align: center;
+    margin-bottom: 5rem;
   }
 
 h1 {
@@ -141,6 +142,15 @@ a:hover {
 
 /* maps */ 
 
+#filter-options {
+    top: 10px;
+    left: 10px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: -1000;
+}
+
 #map-content {
     justify-content: space-evenly;
     text-align: center;
@@ -154,16 +164,10 @@ a:hover {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
     height: 40rem; 
-    /* z-index: 1; */
+    z-index: -1000;
 }
 
 #small-map {
-    margin-top: 2.5rem;
-    height: 20rem;
-    width: 30rem;
-}
-
-#events-map {
     margin-top: 2.5rem;
     height: 20rem;
     width: 30rem;
@@ -183,19 +187,6 @@ a:hover {
 }
 
 /* calendar */ 
-
-#small-calendar {
-    width: 30rem;
-}
-
-#calendar-content {
-    justify-content: space-evenly;
-    max-width: max-content;
-    margin: auto;
-    padding: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-}
 
 #events {
     justify-content: center;
@@ -418,14 +409,4 @@ a:hover, a:active {
 #update {
     text-align: center;
     margin-top: 2.5rem;
-}
-
-#filter-options {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
 }
