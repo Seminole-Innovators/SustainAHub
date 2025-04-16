@@ -19,11 +19,42 @@
     --white-color: #fff;
 }
 
-/* Styling the body */
+@font-face {
+    font-family: 'OwnersNarrow';
+    src: url('../fonts/OwnersTRIALNarrow-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+@font-face {
+    font-family: 'NexaExtraLight';
+    src: url('../fonts/Nexa-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+}
+  
+
 body {
-    font-family: 'Gaegu', sans-serif; /* Apply Gaegu to the body */
+    font-family: 'NexaExtraLight', sans-serif;
+    font-weight: 200;
     background-color: var(--body-color); /* Light beige */
     color: var(--text-color)
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'OwnersNarrow', sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+html, body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 /* Container for consistent width */
@@ -36,29 +67,30 @@ body {
 header {
     position: sticky;
     top: 0;
+    z-index: 30;
     background: url("../icons/bg/bgHead.png") no-repeat center 40%;
     background-size: cover;
     color: var(--white-color);
     text-align: center;
     padding: 0;
-    height: 170px;
+    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-  
-  header::before {
+
+header::before {
     content: "";
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 0;
-  }
+}
 
-  header .container {
+header .container {
     position: relative;
     z-index: 1;
-  }
+}
 
 h1 {
     font-size: 3em;
@@ -72,9 +104,17 @@ h3 {
 
 body.middle-bg {
     position: relative;
-    background: url("../icons/bg/bgMiddle.png") no-repeat center 40%;
+    background: url("../icons/bg/bgMiddle.png") no-repeat center top 20%;
     background-size: cover;
     background-color: #f7f2e7; /* fallback */
+    z-index: 0;
+}
+
+body.bg {
+    position: relative;
+    background: url("../icons/bg/plainBg.png") no-repeat center top 20%;
+    background-size: cover;
+    background-color: rgb(51, 27, 12); /* fallback */
     z-index: 0;
 }
 
@@ -85,7 +125,7 @@ body.middle-bg::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* adjust darkness */
+    /* background-color: rgba(0, 0, 0, 0.3); /* adjust darkness */
     z-index: -1;
 }
 
@@ -99,6 +139,7 @@ body.middle-bg::before {
     margin: 0;
     padding-bottom: 20px;
     padding-top: 20px;
+    margin-top: 35px;
 }
 
 .logo img {
@@ -116,9 +157,10 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.8rem;
 }
 
 .nav-img-button {
@@ -131,7 +173,7 @@ nav {
 
 .nav-img-button img {
     display: block;
-    width: 130px;
+    width: 120px;
     height: auto;
     transition: transform 0.25s ease-in-out;
     border: none;
@@ -159,10 +201,11 @@ nav ul li {
 }
 
 /* Active state for the current page */
-nav ul li a.active {
-    background-color: var(--second-green); /* Darker green for active page */
-    cursor: default; /* Indicate that it's not a link */
+.nav-img-button.active {
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.74));
+    border-radius: 20px;
 }
+  
 
 nav ul li a {
     display: inline-block;
@@ -184,46 +227,49 @@ nav ul li a:hover {
 nav ul li a:active {
     background-color: var(--second-green); /* Darker green */
 }
+
 /* === IMAGE FOOTER: Only applies when body has the .custom-footer class === */
 body.custom-footer footer {
     position: relative;
     background: none;
-    height: 130px; /* or match your footerBg.png */
+    height: 180px;
     color: var(--white-color);
     text-align: center;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 15px;
-    margin-top: 10px;
+    margin-top: 20px;
     z-index: 1;
     overflow: hidden;
 }
+
 body.custom-footer footer::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../icons/bg/footerBg.png") no-repeat center top;
-    background-size: 100% 130px;
-    filter: brightness(0.7);
+    background: url("../icons/bg/footerBg.png") no-repeat center top;;
+    background-size: 100% 360px;
     z-index: 0;
 }
+
 body.custom-footer footer .container {
     position: relative;
     z-index: 1;
 }
+
 /* === DEFAULT FOOTER: Applies when .custom-footer is not present === */
 body:not(.custom-footer) footer {
-    background-color: var(--darker-contrast-color);
     color: var(--white-color);
     text-align: center;
     padding: 15px 0;
-    margin-top: 40px;
     font-size: 0.9rem;
 }
+
 footer p {
-    font-size: 1em;
+    font-size: 1.2em;
 }
+
 a {
     color: var(--orange); /* Orange */
 }
@@ -240,14 +286,41 @@ a:hover {
 }
 
 #index-subheading {
+    position: relative;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-    font-size: 2rem;
+    margin: 2.5rem auto;
+    font-size: 1.8rem;
+    color: black;
+    background: url('../icons/bg/paper.png') no-repeat center center;
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 3rem 2.5rem;     
+    box-sizing: border-box;
+    max-width: 1000px;            
+    width: 90%;                       
+    min-height: 420px;                
+    border-radius: 20px;
+    overflow: hidden;
 }
-
+  
+#carousel-placeholder {
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    margin: 2rem auto;
+    background-color: #ddd; /* light gray for now */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    font-style: italic;
+    text-align: center;
+}
+  
 #index-content {
     justify-content: space-evenly;
     max-width: max-content;
@@ -258,22 +331,71 @@ a:hover {
 }
 
 /* maps */ 
+html.map-page,
+body.map-page {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
 
-#map-content {
-    justify-content: space-evenly;
-    text-align: center;
-    margin: auto;
-    padding: 1.5rem;
+body.map-page {
+    height: 100vh; /* Full screen */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main container between header and footer */
+body.map-page #map-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+body.map-page #filter-options {
+    display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.75rem 1rem;
+    background-color: lightgray;
+    border-bottom: 1px solid #ccc;
+    flex-shrink: 0;
+
+    font-size: 0.95rem;
+    color: var(--darker-contrast-color);
+
+    z-index: 1000;
+    position: relative;
+    pointer-events: auto;
 }
 
-#map { 
-    max-width: 80rem;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-    height: 40rem; 
-    /* z-index: 1; */
+body.map-page #filter-options h2 {
+    margin-right: 1rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    white-space: nowrap;
 }
+
+/* Optional: Reduce space taken by each label */
+body.map-page #filter-options label {
+    white-space: nowrap;
+}
+
+
+/* Make the map fill the remaining vertical space */
+body.map-page #map {
+    flex: 1;
+    width: 100%;
+    height: 100%; /* Required for Leaflet */
+    z-index: 0;
+    pointer-events: auto;
+}
+
 
 #small-map {
     margin-top: 2.5rem;
@@ -296,19 +418,6 @@ a:hover {
 
 /* calendar */ 
 
-#small-calendar {
-    width: 30rem;
-}
-
-#calendar-content {
-    justify-content: space-evenly;
-    max-width: max-content;
-    margin: auto;
-    padding: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-}
-
 #events {
     justify-content: center;
     text-align: center;
@@ -316,318 +425,150 @@ a:hover {
     margin-bottom: 5rem;
 }
 
-/* About Us */
-
-.descriptor {
-    margin-top: 1.5rem;
-    align-self: center;
-    text-align: center;
-}
-
-.team-section {
-    display: block;
-    justify-content: center;
-}
-
-.about-section {
+/* === Redesigned About Us (Team) Section === */
+.team-grid {
     display: flex;
-    margin: 1.5rem;
-    flex-grow: 1;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-.card {
-    scroll-margin-top: 8rem;
-    width: min(100%, 300px);
-    background-color: var(--body-color);
-    color: var(--darker-contrast-color);
-    border: 2px solid #000;
-    border-radius: 15px;
-    padding: 1rem;
-    display: block;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    text-align: center;
-  }
-
-  .card figure {
-    margin: auto;
-    display: block;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .card img {
-    margin: auto;
-    width: 300px;
-    border: 5px double var(--text-color);
-    border-radius: 50%;
-  }
-
-  .card figcaption {
-    font-weight: bolder;
-    font-size: 2rem;
-    margin: 1rem;
-    text-align: center;
-    justify-content: center;
-  }
-
-  /* || SMALL */
-
-  @media screen and (min-width: 375px) {
-    .about-section {
-      justify-content: center;
-      flex-flow: row wrap;
-      padding: 1rem;
-    }
-
-    .card {
-      width: min(100%, 600px);
-    }
-
-  }
+    gap: 2rem;
+    padding: 2rem;
+    padding-bottom: 2rem;
+}
   
-  /* || MEDIUM */
+.team-member {
+    display: flex;
+    align-items: center;
+    background-color: var(--pale-green-yellow);
+    border-radius: 20px;
+    padding: 1.5rem;
+    width: min(90%, 600px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+  
+.team-member:hover {
+    transform: scale(1.02);
+}
+  
+.team-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1.5rem;
+    border: 5px solid var(--first-green);
+}
+  
+.team-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+    color: var(--darker-contrast-color);
+}
+  
+.team-info p {
+    font-size: 1.2rem;
+    color: var(--darker-contrast-color);
+}
 
-  @media screen and (min-width: 768px) {
+.descriptor h2 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    line-height: 1.3;
+    color: var(--white-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.descriptor p {
+    text-align: center;
+}
+
+.about-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+    padding: 2.5rem 1rem;
+    max-width: 1200px;
+    margin: auto;
+}
+  
+.about-text {
+    flex: 1 1 500px;
+    max-width: 700px;
+    color: var(--white-color);
+    font-size: 1.2rem; /* smaller size */
+    line-height: 1.8;
+    background: url('../icons/bg/bgText.png') no-repeat center center;
+    background-size: 150% auto;
+    padding: 2rem 2.5rem;
+    box-sizing: border-box;
+}
+  
+.about-text p {
+    margin-bottom: 1.2rem; /* space between paragraphs */
+}
+  
+.about-text h2 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    line-height: 1.3;
+    color: var(--first-green);
+    margin-bottom: 1rem;
+}
+  
+.about-text .subtitle {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: var(--first-green);
+    margin-top: 0.5rem;
+}
+  
+.about-image {
+    flex: 1 1 300px;
+    text-align: center;
+    background-color: transparent;
+}
+  
+.about-image img {
+    max-width: 120%;
+    height: auto;
+}
+
+/* || SMALL */
+
+@media screen and (min-width: 375px) {
+    .about-section {
+        justify-content: center;
+        flex-flow: row wrap;
+        padding: 1rem;
+    }
 
     .card {
-      width: min(100%, 400px);
+        width: min(100%, 600px);
+    }
+}
+  
+/* || MEDIUM */
+
+@media screen and (min-width: 768px) {
+
+    .card {
+        width: min(100%, 400px);
     }
 
     .card figure {
-      flex-flow: column-reverse;
+        flex-flow: column-reverse;
     }
 
     .card p {
-      margin-top: 1rem;
+        margin-top: 1rem;
     }
-  } 
-
-
-/* resources */
-
-
-#resource-content {
-    justify-content: space-evenly;
-    text-align: center;
-    max-width: max-content;
-    margin: auto;
-    padding: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#resourceLinks{
-    width: 30rem;
-    margin: 2.5rem;
-    text-align: center;
-    background-color: var(--white-color);
-    border: 10px solid var(--first-green);
-    padding: 10px 20px;
-
-    text-decoration: none;
-    a{text-decoration: none;};
-    list-style: none;
-    font-size: 1.5rem;
 } 
-
-a:hover, a:active {
-    background-color: green;
-    color: white;
-}
-
-.text-box {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 30px;
-    width: 45%;
-}
-
-.image-box {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 30px;
-    width: 45%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.image-box img {
-    max-width: 300px; /* Adjust as needed */
-    margin: 10px;
-}
-.header-box {
-    background-color: #7af37e;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-.contentResource {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    margin-left: 0;
-}
-
-
-/* */
-
-.invasives {
-    padding: 0px 0;
-    text-align: center;
-    flex-wrap: wrap;
-}
-
-.invasive {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start; /* Aligns content properly */
-    background: var(--pale-green-yellow); /* Light background for invasive cards */
-    margin: 50px 0;
-    padding: 15px;
-    border-radius: 12px; /* Rounded corners for cards */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Box shadow for cards */
-    transition: transform 0.2s; /* Added background transition */
-}
-
-.invasive:hover,
-.invasive.active{
-    transform: translateY(-3px); /* Slightly raise effect on hover */
-    background: linear-gradient(135deg, var(--white-color) 70%, var(--orange) 30%);
-    transition: background 0.5s ease; /* Transition only when active */
-}
-
-.invasive-info {
-    flex: 1; /* Text section takes remaining space */
-    padding-right: 20px; /* Adds space between text and image */
-    display: flex;
-    flex-direction: column; /* Stacks the text and button vertically */
-    justify-content: space-between; /* Distributes space between elements */
-    transition: height 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth height transition */
-    overflow: hidden; /* Hide overflow to prevent content from spilling out */
-}
-
-.invasive-timeframe {
-    font-style: italic;
-    color: var(--darker-contrast-color); /* Lighter black */
-    margin-bottom: 10px;
-}
-
-.invasive-title {
-    font-size: 1.6em;
-    margin: 0 0 -5px 0; /* Space for visual separation */
-}
-
-.invasive-description {
-    font-size: 1.3em;
-    margin: 0 0 10px 0;
-    text-align: left;
-}
-
-.invasive-description-li {
-    font-size: 1.3em;
-    margin: 0 0 8px 0;
-    text-align: left;
-}
-
-.invasive-subheading {
-    font-size: 1.4em;
-    text-align: left;
-}
-
-.more-content {
-    height: 0; /* Start collapsed */
-    overflow: hidden; /* Prevent overflow */
-    transition: height 0.5s ease-in-out; /* Smooth height transition */
-}
-
-.invasive-video {
-    width: 100%; /* Make the video take full width */
-    height: 360px; /* Set a fixed height */
-    max-width: 600px; /* Set a maximum width to control the size */
-    object-fit: cover; /* Ensures aspect ratio is maintained */
-    border-radius: 12px; /* Matches the card's border radius */
-}
-
-.invasive-image {
-    width: 50%; /* Ensure the image takes full width */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 300px; /* Set a maximum width to control the size */
-    margin: 0; /* Reset margin */
-    display: block; /* Make sure the image behaves like a block element */
-    border-radius: 12px; /* Matches the card's border radius */
-}
-
-.btn {
-    display: inline-block;
-    background: var(--first-green); /* Button background color */
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s, transform 0.2s; /* Reduced movement on hover */
-    margin-top: 20px; /* Adds spacing above the button */
-}
-
-.read-more-link {
-    color: var(--orange); /* Link color */
-    text-decoration: underline; /* Underline the text to indicate it's a link */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    margin-top: 10px; /* Space above the link */
-    display: inline-block; /* Allow spacing above */
-}
-
-.read-more-link:hover {
-    text-decoration: none; /* Optionally remove underline on hover */
-}
-
-.btn:hover {
-    background: var(--darker-orange); /* Darker shade */
-    transform: scale(1.03); /* Slightly grow on hover */
-}
-
-/* Locations */ 
-
-#sustainableBusinesses {
-    justify-content: space-evenly;
-    max-width: max-content;
-    margin: auto;
-    padding: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#recyclePoints {
-    justify-content: space-evenly;
-    max-width: max-content;
-    margin: auto;
-    padding: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.location {
-    width: 30rem;
-    text-align: center;
-    background-color: var(--white-color);
-    border: 10px solid var(--first-green);
-    padding: 10px 20px;
-    text-decoration: none;
-    list-style: none;
-    font-size: 1.5rem;
-    margin: 1.5rem;
-}
 
 #update {
     text-align: center;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
 }
