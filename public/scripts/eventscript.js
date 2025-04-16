@@ -14,11 +14,15 @@ const events = getEvents();
 console.log(events); 
 
 async function loadEvents() {
-    const eventColumn = document.querySelector('.event-column');
+    const eventColumn = document.querySelector('.event-list');
     if (!eventColumn) return;
 
     const events = await getEvents(); // Wait for the actual data
     if (!events) return; // In case of error or no data
+
+    // Sort events by date
+    events.sort((a, b) => new Date(a.date) - new Date(b.date));
+
 
     events.forEach(event => {
         const card = document.createElement('div');

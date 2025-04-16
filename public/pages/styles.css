@@ -37,7 +37,7 @@
 body {
     font-family: 'NexaExtraLight', sans-serif;
     font-weight: 200;
-    background-color: var(--body-color); /* Light beige */
+    background-color: var(--body-color); 
     color: var(--text-color)
 }
 
@@ -94,7 +94,7 @@ header .container {
 
 h1 {
     font-size: 3em;
-    color: var(--white-color); /* Optional styling */
+    color: var(--white-color);
 }
 
 h3 {
@@ -120,7 +120,7 @@ body.bg {
 
 body.middle-bg::before {
     content: "";
-    position: fixed; /* cover entire viewport */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -128,7 +128,6 @@ body.middle-bg::before {
     /* background-color: rgba(0, 0, 0, 0.3); /* adjust darkness */
     z-index: -1;
 }
-
 
 .logo {
     height: 125px;
@@ -218,14 +217,12 @@ nav ul li a {
     transition: background-color 0.3s ease; /* Smooth transition for color change */
 }
 
-/* Hover effect - lighter shade */
 nav ul li a:hover {
-    background-color: var(--third-green); /* Slightly lighter green */
+    background-color: var(--third-green);
 }
 
-/* Active state when clicked - darker shade */
 nav ul li a:active {
-    background-color: var(--second-green); /* Darker green */
+    background-color: var(--second-green);
 }
 
 /* === IMAGE FOOTER: Only applies when body has the .custom-footer class === */
@@ -262,8 +259,8 @@ body.custom-footer footer .container {
 body:not(.custom-footer) footer {
     color: var(--white-color);
     text-align: center;
-    padding: 15px 0;
-    font-size: 0.9rem;
+    padding: 5px 0;
+    font-size: 0.7rem;
 }
 
 footer p {
@@ -271,17 +268,16 @@ footer p {
 }
 
 a {
-    color: var(--orange); /* Orange */
+    color: var(--orange); 
 }
 
 a:hover {
-    color: var(--darker-orange); /* Darker orange */
+    color: var(--darker-orange); 
 }
 
-/* Additional fun colors */
 #content {
     padding: 20px;
-    background-color: var(--pale-green-yellow); /* Pale greenish-yellow */
+    background-color: var(--pale-green-yellow); 
     justify-content: space-evenly;
 }
 
@@ -346,7 +342,6 @@ body.map-page {
     flex-direction: column;
 }
 
-/* Main container between header and footer */
 body.map-page #map-content {
     flex: 1;
     display: flex;
@@ -381,39 +376,16 @@ body.map-page #filter-options h2 {
     white-space: nowrap;
 }
 
-/* Optional: Reduce space taken by each label */
 body.map-page #filter-options label {
     white-space: nowrap;
 }
 
-
-/* Make the map fill the remaining vertical space */
 body.map-page #map {
     flex: 1;
     width: 100%;
-    height: 100%; /* Required for Leaflet */
+    height: 100%;
     z-index: 0;
     pointer-events: auto;
-}
-
-
-#small-map {
-    margin-top: 2.5rem;
-    height: 20rem;
-    width: 30rem;
-}
-
-#air-quality {
-    margin-top: 2.5rem;
-    height: 20rem;
-    width: 30rem;
-    justify-content: center;
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-#air-quality-number {
-    font-size: 3.5rem;
 }
 
 /* calendar */ 
@@ -425,7 +397,7 @@ body.map-page #map {
     margin-bottom: 5rem;
 }
 
-/* === Redesigned About Us (Team) Section === */
+/* Team section and About Us, also used in Contact Page */
 .team-grid {
     display: flex;
     flex-wrap: wrap;
